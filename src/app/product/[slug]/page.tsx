@@ -3,8 +3,14 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+type Params = Promise<{ slug: string }>;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { slug } = await params; // Sử dụng await để giải quyết Promise
 
   const product = mockProducts.find((p) => p.slug === slug);
   if (!product) return { title: "Không tìm thấy sản phẩm" };
@@ -35,10 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-
-
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
+export default async function Page({ params }: { params: Params }) {
+  const { slug } = await params; // Giải quyết Promise
 
   const product = mockProducts.find((p) => p.slug === slug);
 
@@ -47,13 +51,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <main className="container mx-auto p-4">
       <div className="max-w-2xl mx-auto border p-4 rounded-lg shadow-lg">
-        <Image src={product.image} alt={product.name} width={300} height={300} className="mx-auto" />
+        <Image
+          src={product.image}
+          alt={product.name}
+          width={300}
+          height={300}
+          className="mx-auto"
+        />
         <h1 className="text-3xl font-bold mt-4">{product.name}</h1>
-        <p className="text-gray-700 text-xl font-semibold">Giá: {product.price}</p>
+        <p className="text-gray-700 text-xl font-semibold">
+          Giá: {product.price}
+        </p>
         <p className="text-gray-500">Tình trạng: {product.condition}</p>
       </div>
     </main>
   );
 }
-
-

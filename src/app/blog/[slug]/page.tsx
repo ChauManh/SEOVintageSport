@@ -3,12 +3,14 @@ import mockBlog from "@/data/mockBlog";
 import { Metadata } from "next";
 import Image from "next/image";
 
+type Params = Promise<{ slug: string }>;
+
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Params;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const blog = mockBlog.find((b) => b.slug === slug);
 
   if (!blog) {
@@ -41,12 +43,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+export default async function BlogDetail({ params }: { params: Params }) {
+  const { slug } = await params;
   const blog = mockBlog.find((b) => b.slug === slug);
 
   if (!blog) return notFound();
