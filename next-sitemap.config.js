@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: "https://yourdomain.com", // Đổi thành domain thật sau này
+  siteUrl: "https://seo-vintage-sport.vercel.app/", // Đổi thành domain thật sau này
   generateRobotsTxt: true,
 };
