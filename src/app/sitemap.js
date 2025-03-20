@@ -1,4 +1,4 @@
-import mockProducts from "@/data/mockData";
+import mockProducts from "@/data/mockProduct";
 
 export default function sitemap() {
   return Response.json({
