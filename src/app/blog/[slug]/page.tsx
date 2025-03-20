@@ -8,7 +8,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const blog = mockBlog.find((b) => b.slug === slug);
 
   if (!blog) {
@@ -46,7 +46,7 @@ export default async function BlogDetail({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const blog = mockBlog.find((b) => b.slug === slug);
 
   if (!blog) return notFound();
