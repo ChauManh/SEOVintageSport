@@ -1,6 +1,28 @@
 import mockBlog from "@/data/mockBlog";
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog WTM - Tất Cả Bài Viết",
+  description:
+    "Khám phá những bài viết hay nhất về áo quần thể thao cổ điển từ WTM Blog.",
+  openGraph: {
+    title: "Blog WTM - Tất Cả Bài Viết",
+    description:
+      "Khám phá những bài viết hay nhất về áo quần thể thao cổ điển từ WTM Blog.",
+    url: "https://wtm-vintage-sport.vercel.app/",
+    type: "website",
+    images: [
+      {
+        url: "/asset/blog-thumbnail.jpg",
+        width: 800,
+        height: 500,
+        alt: "WTM Blog",
+      },
+    ],
+  },
+};
 
 export default function BlogPage() {
   return (
@@ -11,7 +33,7 @@ export default function BlogPage() {
           <div key={blog.id} className="border p-4 rounded-lg shadow-lg">
             <Image
               src={blog.image}
-              alt={blog.title}
+              alt={`Hình ảnh bài viết: ${blog.title}`}
               width={300}
               height={200}
               className="mx-auto rounded-md"
@@ -20,7 +42,7 @@ export default function BlogPage() {
             <p className="text-gray-600">{blog.excerpt}</p>
             <Link
               href={`/blog/${blog.slug}`}
-              className="text-blue-500 mt-2 block"
+              className="text-blue-500 mt-2 block hover:underline"
             >
               Đọc thêm
             </Link>

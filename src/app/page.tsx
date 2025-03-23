@@ -6,12 +6,14 @@ import Link from "next/link";
 
 // Metadata SEO
 export const metadata: Metadata = {
-  title: "WTM - Cửa hàng áo quần bóng đá cũ",
-  description: "Mua bán áo quần bóng đá cũ, hàng tuyển từ các CLB Châu Âu.",
+  title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
+  description:
+    "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
   openGraph: {
-    title: "WTM - Cửa hàng áo quần bóng đá cũ",
-    description: "Mua bán áo quần bóng đá cũ, hàng tuyển từ các CLB Châu Âu.",
-    url: "https://wtm.com",
+    title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
+    description:
+      "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
+    url: "https://wtm-vintage-sport.vercel.app/",
     type: "website",
     images: [
       {
@@ -24,8 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WTM - Cửa hàng áo quần bóng đá cũ",
-    description: "Mua bán áo quần bóng đá cũ, hàng tuyển từ các CLB Châu Âu.",
+    title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
+    description:
+      "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
     images: ["/logo.png"],
   },
 };
@@ -35,10 +38,10 @@ export default function Home() {
   return (
     <main className="container mx-auto p-4">
       {/* Header với logo */}
-      <header className="flex justify-center items-center py-4">
+      <header className="flex justify-center items-center py-4 bg-gray-600 mb-1">
         <Image
           src="/logo.png"
-          alt="WTM Logo"
+          alt="WTM Logo - Cửa hàng áo quần thể thao cổ điển"
           width={300}
           height={300}
           priority={true}
@@ -49,12 +52,12 @@ export default function Home() {
       <section className="text-center">
         <h1 className="text-4xl font-bold">Chào mừng đến với WTM</h1>
         <p className="text-gray-600 mt-2">
-          Cửa hàng áo bóng đá cũ - Hàng tuyển từ các CLB Châu Âu
+          Cửa hàng áo bóng đá cổ điển - Hàng tuyển từ các CLB Châu Âu
         </p>
       </section>
 
       {/* Danh sách sản phẩm */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 mb-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 mb-6 ">
         {mockProducts.map((product) => (
           <div key={product.slug} className="border p-4 rounded-lg shadow-lg">
             <Image
@@ -70,7 +73,7 @@ export default function Home() {
             <p className="text-gray-500">Tình trạng: {product.condition}</p>
             <Link
               href={`/product/${product.slug}`}
-              className="text-blue-500 mt-2 block"
+              className="text-blue-500 mt-2 inline-block"
             >
               Xem chi tiết
             </Link>
