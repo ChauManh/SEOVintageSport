@@ -15,7 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "WTM - Áo quần bóng đá cổ điển",
   description:
-    "Trang web bán áo quần bóng đá vintage WTM – nơi bạn tìm thấy những mẫu áo đấu huyền thoại từ các CLB châu Âu.",
+    "Trang web bán áo quần bóng đá (vintage) WTM – nơi bạn tìm thấy những mẫu áo đấu huyền thoại từ các CLB châu Âu.",
+  keywords:
+    "áo quần bóng đá cổ điển, áo đấu vintage, WTM, quần áo bóng đá cổ điẻn, áo bóng đá cổ điển WTM, áo quần bóng đá 9x, áo vintage",
   metadataBase: new URL("https://wtm-vintage-sport.vercel.app/"), // Thay URL thật của bạn
   openGraph: {
     title: "WTM - Áo quần bóng đá cổ điển",
