@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     })),
     ...mockBlog.map((blog) => ({
-      url: `https://wtm-vintage-sport.vercel.app/product/${blog.slug}`,
+      url: `https://wtm-vintage-sport.vercel.app/blog/${blog.slug}`,
       lastModified: new Date().toISOString(),
     })),
   ];
