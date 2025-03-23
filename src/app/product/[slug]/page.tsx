@@ -17,11 +17,21 @@ export async function generateMetadata({
   if (!product) return { title: "Không tìm thấy sản phẩm" };
 
   return {
-    title: `${product.name} - Cửa hàng áo quần bóng đá cũ`,
-    description: `Mua ${product.name} với giá ${product.price}. ${product.condition}`,
+    title: `${product.name} - Mua áo quần bóng đá cổ điển | WTM`,
+    description: `Tìm ${product.name} - ${product.condition} giá ${product.price}. Cửa hàng WTM chuyên bán áo đấu cổ điển (vintage) CLB Châu Âu.`,
+    keywords: [
+      product.name.toLowerCase(),
+      "mua áo bóng đá cổ điển",
+      "áo đấu vintage",
+      "WTM shop",
+      "cửa hàng áo thể thao",
+      "áo bóng đá CLB Châu Âu",
+      `mua ${product.name} giá tốt`,
+      `tìm ${product.name} chính hãng`,
+    ],
     openGraph: {
-      title: `${product.name} - Cửa hàng áo quần bóng đá cũ`,
-      description: `Mua ${product.name} với giá ${product.price}. ${product.condition}`,
+      title: `${product.name} - Áo quần bóng đá cổ điển | WTM`,
+      description: `Tìm ${product.name} giá ${product.price}. ${product.condition}. Hàng tuyển từ các CLB Châu Âu.`,
       url: `https://wtm-vintage-sport.vercel.app/product/${product.slug}`,
       type: "website",
       images: [
@@ -29,13 +39,13 @@ export async function generateMetadata({
           url: product.image,
           width: 800,
           height: 600,
-          alt: product.name,
+          alt: `${product.name} - Áo bóng đá cổ điển`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${product.name} - WTM | Áo quần bóng đá cũ`,
+      title: `${product.name} - WTM | Áo quần bóng đá cổ điển`,
       description: `Áo đấu vintage ${product.name} - Giá ${product.price}. Tình trạng ${product.condition}.`,
       images: [product.image],
     },
@@ -123,6 +133,30 @@ export default async function Page({ params }: { params: Params }) {
           </ul>
         </aside>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            image: product.image,
+            description: product.description,
+            brand: {
+              "@type": "Brand",
+              name: "WTM Vintage Sport",
+            },
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "VND",
+              price: product.price,
+              availability: "https://schema.org/InStock",
+              url: `https://wtm-vintage-sport.vercel.app/product/${product.slug}`,
+            },
+          }),
+        }}
+      />
     </main>
   );
 }

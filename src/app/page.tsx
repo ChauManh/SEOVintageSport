@@ -6,13 +6,20 @@ import Link from "next/link";
 
 // Metadata SEO
 export const metadata: Metadata = {
-  title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
+  title: "WTM - Cửa hàng áo bóng đá cổ điển, áo đấu vintage giá rẻ",
   description:
-    "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
+    "Mua áo bóng đá cổ điển, áo đấu vintage chính hãng từ các CLB Châu Âu với giá rẻ. Hàng tuyển, chất lượng tốt, giao hàng nhanh chóng.",
+  keywords: [
+    "áo bóng đá cổ điển",
+    "áo đấu vintage",
+    "WTM shop",
+    "cửa hàng áo thể thao WTM",
+    "WTM",
+    "áo bóng đá CLB Châu Âu",
+  ],
   openGraph: {
     title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
-    description:
-      "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
+    description: "Mua áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
     url: "https://wtm-vintage-sport.vercel.app/",
     type: "website",
     images: [
@@ -48,42 +55,56 @@ export default function Home() {
         />
       </header>
 
+      <nav className="text-sm text-gray-600">
+        &gt;
+        <Link href="/" className="hover:text-blue-500">
+          Trang chủ
+        </Link>{" "}
+      </nav>
+
       {/* Nội dung trang */}
       <section className="text-center">
-        <h1 className="text-4xl font-bold">Chào mừng đến với WTM</h1>
+        <h1 className="text-4xl font-bold">
+          WTM - Mua Áo Bóng Đá Cổ Điển, Áo Đấu Vintage Giá Rẻ
+        </h1>
         <p className="text-gray-600 mt-2">
-          Cửa hàng áo bóng đá cổ điển - Hàng tuyển từ các CLB Châu Âu
+          Chuyên cung cấp <strong>áo quần đấu cổ điển (vintage)</strong>, hàng
+          tuyển từ các CLB Châu Âu.
         </p>
       </section>
 
       {/* Danh sách sản phẩm */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 mb-6 ">
-        {mockProducts.map((product) => (
-          <div key={product.slug} className="border p-4 rounded-lg shadow-lg">
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={300}
-              height={300}
-              className="mx-auto"
-              loading="lazy"
-            />
-            <h2 className="text-xl font-bold mt-2">{product.name}</h2>
-            <p className="text-gray-700 font-semibold">Giá: {product.price}</p>
-            <p className="text-gray-500">Tình trạng: {product.condition}</p>
-            <Link
-              href={`/product/${product.slug}`}
-              className="text-blue-500 mt-2 inline-block"
-            >
-              Xem chi tiết
-            </Link>
-          </div>
-        ))}
+      <section className="mt-8">
+        <h2 className="text-3xl font-bold text-center">🛒 Sản Phẩm Nổi Bật</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 mb-6">
+          {mockProducts.map((product) => (
+            <div key={product.slug} className="border p-4 rounded-lg shadow-lg">
+              <Image
+                src={product.image}
+                alt={`Mẫu áo bóng đá cổ điển ${product.name} - Áo bóng đá cổ điển (vintage)`}
+                width={300}
+                height={300}
+                className="mx-auto"
+              />
+              <h3 className="text-xl font-bold mt-2">{product.name}</h3>
+              <p className="text-gray-700 font-semibold">
+                Giá: {product.price}
+              </p>
+              <p className="text-gray-500">Tình trạng: {product.condition}</p>
+              <Link
+                href={`/product/${product.slug}`}
+                className="text-blue-500 mt-2 inline-block"
+              >
+                Xem chi tiết {product.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Danh sách blog */}
       <section className="mt-8">
-        <h2 className="text-3xl font-bold text-center">Blog Mới Nhất</h2>
+        <h2 className="text-3xl font-bold mt-8">📝 Blog & Tin Tức Mới Nhất</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           {mockBlog.map((blog) => (
             <div key={blog.id} className="border p-4 rounded-lg shadow-lg">
@@ -116,6 +137,28 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "WTM Vintage Sport",
+            url: "https://wtm-vintage-sport.vercel.app",
+            description:
+              "Cửa hàng chuyên cung cấp áo quần thể thao cổ điển từ các CLB châu Âu.",
+            publisher: {
+              "@type": "Organization",
+              name: "WTM Vintage Sport",
+              logo: {
+                "@type": "ImageObject",
+                url: "/asset/logo.png",
+              },
+            },
+          }),
+        }}
+      />
     </main>
   );
 }

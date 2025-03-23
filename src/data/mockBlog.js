@@ -6,6 +6,7 @@ const mockBlog = [
     excerpt:
       "Hướng dẫn chi tiết cách bảo quản áo đấu cổ điển (vintage) để tránh phai màu, hư hỏng và duy trì giá trị lâu dài.",
     image: "/asset/blogbqqa.jpg",
+    datePublished: "2025-03-20",
     content: [
       {
         type: "text",
@@ -62,6 +63,7 @@ const mockBlog = [
     excerpt:
       "Danh sách những mẫu áo bóng đá cổ điển đẹp nhất mọi thời đại mà dân sưu tầm không thể bỏ lỡ.",
     image: "/asset/top10aodauvintage.webp",
+    datePublished: "2025-03-20",
     content: [
       {
         type: "text",
@@ -130,6 +132,7 @@ const mockBlog = [
     id: "3",
     title: "Hướng dẫn phân biệt áo đấu fake và real",
     slug: "phan-biet-ao-dau-fake-real",
+    datePublished: "2025-03-20",
     excerpt:
       "Cách nhận biết áo đấu chính hãng và áo đấu giả để tránh mua nhầm hàng kém chất lượng.",
     image: "/asset/phanbietthatgia.jpg",
@@ -186,6 +189,7 @@ const mockBlog = [
     excerpt:
       "Cùng điểm qua 3 thương hiệu sản xuất áo đấu bóng đá uy tín nhất hiện nay.",
     image: "/asset/5thuonghieunoitieng.jpg",
+    datePublished: "2025-03-20",
     content: [
       {
         type: "text",

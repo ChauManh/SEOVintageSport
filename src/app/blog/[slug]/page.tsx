@@ -18,6 +18,10 @@ export async function generateMetadata({
   return {
     title: `${blog.title} - WTM Blog`,
     description: blog.excerpt,
+    keywords: "bóng đá cổ điển, áo đấu vintage, WTM Blog",
+    alternates: {
+      canonical: `https://wtm-vintage-sport.vercel.app/blog/${blog.slug}`,
+    },
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
@@ -46,7 +50,7 @@ export default async function BlogDetail({ params }: { params: Params }) {
         <Link href="/" className="flex items-center space-x-3">
           <Image
             src="/logo.png"
-            alt="WTM Logo"
+            alt="WTM Logo - Blog về áo quần bóng đá cổ điển"
             width={160}
             height={160}
             className="rounded-full"
@@ -62,17 +66,23 @@ export default async function BlogDetail({ params }: { params: Params }) {
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-        {/* Nội dung chính */}
-        <div className="lg:col-span-8 mx-auto p-5">
+        {/* Nội dung bài viết */}
+        <article className="lg:col-span-8 mx-auto p-5">
           <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
+          <p className="text-gray-500 italic mb-4">
+            Đăng ngày: {blog.datePublished}
+          </p>
+
           <Image
             src={blog.image}
-            alt={blog.title}
-            width={800} // Thay đổi tùy theo kích thước thực tế của ảnh
-            height={500} // Thay đổi tùy theo kích thước thực tế của ảnh
+            alt={`Ảnh bài viết - ${blog.title}`}
+            width={800}
+            height={500}
             className="w-full h-64 object-cover rounded-lg mb-4 border-2 border-gray-900"
+            priority
           />
-          <div className="prose">
+
+          <section className="prose">
             {blog.content.map((section, index) => {
               if (section.type === "text") {
                 return (
@@ -86,10 +96,11 @@ export default async function BlogDetail({ params }: { params: Params }) {
                   <Image
                     key={index}
                     src={section.src || "/asset/defaultimage.jpg"}
-                    alt={section.alt || "Blog về áo quần bóng đá cổ điển"}
-                    width={800} // Chỉnh kích thước phù hợp
+                    alt={section.alt || `Hình ảnh minh họa - ${blog.title}`}
+                    width={800}
                     height={500}
                     className="w-full rounded-lg my-4 border-2 border-gray-300"
+                    loading="lazy"
                   />
                 );
               }
@@ -104,15 +115,16 @@ export default async function BlogDetail({ params }: { params: Params }) {
               }
               return null;
             })}
-          </div>
-        </div>
+          </section>
+        </article>
 
-        {/* Sidebar */}
+        {/* Sidebar - Bài viết liên quan */}
         <aside className="lg:col-span-4 bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-300">
-          <h3 className="text-xl font-semibold mb-4">Bài viết liên quan</h3>
+          <h2 className="text-xl font-semibold mb-4">📖 Bài viết liên quan</h2>
           <ul className="space-y-3">
             {mockBlog
               .filter((b) => b.slug !== blog.slug)
+              .slice(0, 5)
               .map((related) => (
                 <li key={related.id}>
                   <Link href={`/blog/${related.slug}`}>
@@ -125,6 +137,39 @@ export default async function BlogDetail({ params }: { params: Params }) {
           </ul>
         </aside>
       </div>
+
+      {/* Schema JSON-LD cho SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: blog.title,
+            description: blog.excerpt,
+            image: blog.image,
+            author: {
+              "@type": "Organization",
+              name: "WTM Blog",
+              url: "https://wtm-vintage-sport.vercel.app",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "WTM",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://wtm-vintage-sport.vercel.app/logo.png",
+              },
+            },
+            datePublished: blog.datePublished,
+            dateModified: blog.datePublished,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://wtm-vintage-sport.vercel.app/blog/${blog.slug}`,
+            },
+          }),
+        }}
+      />
     </main>
   );
 }
