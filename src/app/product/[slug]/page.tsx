@@ -123,7 +123,7 @@ export default async function Page({ params }: { params: Params }) {
                     className="rounded-md"
                   />
                   <Link
-                    href={`/blog/${related.slug}`}
+                    href={`/product/${related.slug}`}
                     className="text-blue-600 hover:underline flex-1"
                   >
                     {related.name}
