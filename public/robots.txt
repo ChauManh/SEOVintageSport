@@ -2,8 +2,5 @@
 User-agent: *
 Allow: /
 
-# Host
-Host: https://wtm-vintage-sport.vercel.app/
-
 # Sitemaps
 Sitemap: https://wtm-vintage-sport.vercel.app/sitemap.xml
