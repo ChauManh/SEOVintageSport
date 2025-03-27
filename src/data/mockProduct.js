@@ -2,7 +2,8 @@ const mockProducts = [
   {
     id: "1",
     name: "Áo đấu Manchester United 1999",
-    price: "1.200.000đ",
+    price: "1200000",
+    priceCurrency: "VND",
     image: "/asset/mu1999.webp",
     condition: "Còn mới 90%",
     slug: "ao-mu-1999",
@@ -12,7 +13,8 @@ const mockProducts = [
   {
     id: "2",
     name: "Áo đấu Real Madrid 2002",
-    price: "950.000đ",
+    price: "950000",
+    priceCurrency: "VND",
     image: "/asset/real2002.webp",
     condition: "Còn mới 80%",
     slug: "ao-real-2002",
@@ -22,7 +24,8 @@ const mockProducts = [
   {
     id: "3",
     name: "Áo đấu AC Milan 2007",
-    price: "1.100.000đ",
+    price: "1100000",
+    priceCurrency: "VND",
     image: "/asset/acmilan2007.webp",
     condition: "Còn mới 85%",
     slug: "ao-milan-2007",
@@ -32,7 +35,8 @@ const mockProducts = [
   {
     id: "4",
     name: "Áo đấu Barcelona 2009",
-    price: "1.300.000đ",
+    price: "1300000",
+    priceCurrency: "VND",
     image: "/asset/barca2009.webp",
     condition: "Còn mới 95%",
     slug: "ao-barca-2009",
@@ -42,7 +46,8 @@ const mockProducts = [
   {
     id: "5",
     name: "Áo đấu Chelsea 2012",
-    price: "1.000.000đ",
+    price: "1000000",
+    priceCurrency: "VND",
     image: "/asset/chelsea2012.webp",
     condition: "Còn mới 88%",
     slug: "ao-chelsea-2012",
@@ -52,7 +57,8 @@ const mockProducts = [
   {
     id: "6",
     name: "Áo đấu Arsenal 2004",
-    price: "1.400.000đ",
+    price: "1400000",
+    priceCurrency: "VND",
     image: "/asset/ars2004.jpg",
     condition: "Còn mới 90%",
     slug: "ao-arsenal-2004",
@@ -62,7 +68,8 @@ const mockProducts = [
   {
     id: "7",
     name: "Áo đấu Inter Milan 2010",
-    price: "1.250.000đ",
+    price: "1250000",
+    priceCurrency: "VND",
     image: "/asset/inter2010.webp",
     condition: "Còn mới 85%",
     slug: "ao-inter-2010",
@@ -72,7 +79,8 @@ const mockProducts = [
   {
     id: "8",
     name: "Áo đấu Bayern Munich 2013",
-    price: "1.100.000đ",
+    price: "1100000",
+    priceCurrency: "VND",
     image: "/asset/bayern2013.webp",
     condition: "Còn mới 87%",
     slug: "ao-bayern-2013",
@@ -82,7 +90,8 @@ const mockProducts = [
   {
     id: "9",
     name: "Áo đấu Liverpool 2005",
-    price: "1.300.000đ",
+    price: "1300000",
+    priceCurrency: "VND",
     image: "/asset/liv2005.webp",
     condition: "Còn mới 92%",
     slug: "ao-liverpool-2005",
@@ -92,7 +101,8 @@ const mockProducts = [
   {
     id: "10",
     name: "Áo đấu Juventus 1996",
-    price: "1.500.000đ",
+    price: "1500000",
+    priceCurrency: "VND",
     image: "/asset/juv1996.jpg",
     condition: "Còn mới 80%",
     slug: "ao-juventus-1996",
