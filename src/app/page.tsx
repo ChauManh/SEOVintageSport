@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png", // Đường dẫn logo trong thư mục public
+        url: "/asset/logo.png", // Đường dẫn logo trong thư mục public
         width: 500,
         height: 500,
         alt: "WTM Logo",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
     description:
       "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
-    images: ["/logo.png"],
+    images: ["/asset/logo.png"],
   },
 };
 
@@ -47,7 +47,7 @@ export default function Home() {
       {/* Header với logo */}
       <header className="flex justify-center items-center py-4 bg-gray-600 mb-1">
         <Image
-          src="/logo.png"
+          src="/asset/logo.png"
           alt="WTM Logo - Cửa hàng áo quần thể thao cổ điển"
           width={300}
           height={300}

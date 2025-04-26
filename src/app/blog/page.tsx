@@ -38,7 +38,7 @@ export default function BlogPage() {
       <header className="flex items-center justify-between py-4 border-b bg-gray-600 mb-6 px-6 rounded-lg">
         <Link href="/" className="flex items-center space-x-3">
           <Image
-            src="/logo.png"
+            src="/asset/logo.png"
             alt="WTM Logo - Blog về áo quần bóng đá cổ điển"
             width={160}
             height={160}
