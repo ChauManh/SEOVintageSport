@@ -156,6 +156,43 @@ export default function Home() {
                 url: "/asset/logo.png",
               },
             },
+            shippingDetails: {
+              "@type": "OfferShippingDetails",
+              shippingRate: {
+                "@type": "MonetaryAmount",
+                value: "30000", // Phí ship cố định (ví dụ: 30,000 VND)
+                currency: "VND",
+              },
+              shippingDestination: {
+                "@type": "DefinedRegion",
+                addressCountry: "VN",
+              },
+              deliveryTime: {
+                "@type": "ShippingDeliveryTime",
+                handlingTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 1,
+                  maxValue: 2,
+                  unitCode: "d", // ngày
+                },
+                transitTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 2,
+                  maxValue: 4,
+                  unitCode: "d", // ngày
+                },
+              },
+            },
+            hasMerchantReturnPolicy: {
+              "@type": "MerchantReturnPolicy",
+              applicableCountry: "VN",
+              returnPolicyCategory:
+                "https://schema.org/MerchantReturnFiniteReturnWindow",
+              merchantReturnDays: 7, // Cho phép đổi trả trong 7 ngày
+              returnMethod: "https://schema.org/ReturnByMail",
+              refundType: "https://schema.org/RefundMoney",
+              returnFees: "https://schema.org/FreeReturn", // Miễn phí đổi trả
+            },
           }),
         }}
       />
