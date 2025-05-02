@@ -254,6 +254,107 @@ const mockBlog = [
       },
     ],
   },
+  {
+    id: "5",
+    title: "Lịch sử áo đấu Manchester United qua các thời kỳ",
+    slug: "lich-su-ao-dau-mu",
+    excerpt:
+      "Cùng nhìn lại những mẫu áo đấu mang tính biểu tượng của Manchester United từ thập niên 80 đến nay.",
+    image: "/asset/muhistory.jpg",
+    datePublished: "2025-03-22",
+    content: [
+      {
+        type: "text",
+        value:
+          "Manchester United không chỉ nổi tiếng bởi thành tích sân cỏ mà còn bởi những mẫu áo đấu gắn liền với lịch sử hào hùng của CLB.",
+      },
+      {
+        type: "image",
+        src: "/asset/mu1980.webp",
+        alt: "Áo MU thập niên 80",
+      },
+      {
+        type: "text",
+        value: "1. Thập niên 80 – Màu đỏ truyền thống với logo cổ điển",
+      },
+      {
+        type: "text",
+        value:
+          "Áo đấu MU thời kỳ này đơn giản, cổ tròn hoặc cổ bẻ, có sọc trắng hai bên tay áo. Logo cũ mang đậm chất retro.",
+      },
+      {
+        type: "text",
+        value: "2. Giai đoạn 1999 – Cú ăn ba lịch sử",
+      },
+      {
+        type: "image",
+        src: "/asset/mu1999.webp",
+        alt: "Áo MU 1999",
+      },
+      {
+        type: "text",
+        value:
+          "Chiếc áo với logo Sharp gắn liền với cú ăn ba dưới thời Sir Alex Ferguson là mẫu áo được săn lùng nhiều nhất.",
+      },
+      {
+        type: "text",
+        value: "3. Hiện đại hóa và tài trợ mới",
+      },
+      {
+        type: "text",
+        value:
+          "Từ 2010 đến nay, MU sử dụng các mẫu áo do Nike và Adidas sản xuất với logo Aon, Chevrolet… Thiết kế hiện đại nhưng vẫn giữ bản sắc đỏ truyền thống.",
+      },
+      {
+        type: "text",
+        value: "Kết luận",
+      },
+      {
+        type: "text",
+        value:
+          "Áo đấu MU là biểu tượng không chỉ của CLB mà còn của người hâm mộ trên toàn thế giới. Bạn yêu thích mẫu áo nào nhất?",
+      },
+    ],
+  },
+  {
+    id: "6",
+    title: "Cách phối đồ với áo đấu vintage cực chất",
+    slug: "phoi-do-voi-ao-vintage",
+    excerpt:
+      "Biến áo đấu vintage trở thành item thời trang sành điệu khi kết hợp với các món đồ hàng ngày.",
+    image: "/asset/phoido.jpg",
+    datePublished: "2025-03-23",
+    content: [
+      {
+        type: "text",
+        value:
+          "Áo đấu vintage không chỉ dành cho sân bóng mà còn có thể biến tấu thành outfit cực chất nếu biết cách phối đồ đúng.",
+      },
+      {
+        type: "list",
+        items: [
+          "Phối với quần jean rách và giày sneaker trắng – phong cách đường phố.",
+          "Mix cùng áo khoác bomber hoặc denim – retro cá tính.",
+          "Mặc oversize kết hợp cùng short và túi chéo – vibe thể thao hiện đại.",
+        ],
+      },
+      {
+        type: "image",
+        src: "/asset/phoi2.webp",
+        alt: "Phối đồ với áo vintage",
+      },
+      {
+        type: "text",
+        value:
+          "Ngoài ra, bạn có thể tạo điểm nhấn bằng cách mix màu áo đấu với phụ kiện như mũ bucket, balo mini hoặc tất cao cổ.",
+      },
+      {
+        type: "text",
+        value:
+          "Kết luận: Với sự sáng tạo, áo đấu vintage hoàn toàn có thể trở thành item thời trang cực kỳ nổi bật trong tủ đồ của bạn.",
+      },
+    ],
+  },
 ];
 
 export default mockBlog;
