@@ -34,11 +34,10 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: Params }) {
   const { slug } = await params;
   const product = mockProducts.find((p) => p.slug === slug);
-
   if (!product) return notFound();
 
   return (
-    <main className="container mx-auto p-4">
+    <main className="max-w-screen-xl mx-auto p-4">
       {/* Header */}
       <header className="flex items-center justify-between py-4 border-b bg-gray-700 mb-8 px-6 rounded-lg shadow-lg">
         <Link href="/" className="flex items-center space-x-3">
@@ -73,7 +72,7 @@ export default async function Page({ params }: { params: Params }) {
               height={600}
               className="rounded-lg mx-auto"
             />
-            <h1 className="text-3xl font-bold mt-6">{product.name}</h1>
+            <h1 className="text-3xl font-bold mt-6 text-black">{product.name}</h1>
             <p className="text-xl text-green-600 mt-2">
               💰 Giá: {product.price}
             </p>
@@ -87,7 +86,7 @@ export default async function Page({ params }: { params: Params }) {
 
           {/* Aggregate Rating */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold mb-4">
+            <h2 className="text-2xl font-semibold mb-4 text-black">
               ⭐ Đánh giá tổng quát
             </h2>
             <div className="flex items-center space-x-3">
@@ -108,17 +107,17 @@ export default async function Page({ params }: { params: Params }) {
 
           {/* Reviews */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="text-2xl font-semibold mb-6 text-black">
               💬 Đánh giá chi tiết
             </h2>
             <div className="space-y-6">
               {product.review.map((rev, idx) => (
                 <div key={idx} className="border-b pb-4">
-                  <p className="font-semibold text-lg">
+                  <p className="font-semibold text-lg text-gray-700">
                     {rev.author?.name || "Ẩn danh"}
                   </p>
                   <p className="text-sm text-gray-500">{rev.datePublished}</p>
-                  <p className="mt-2">{rev.reviewBody}</p>
+                  <p className="mt-2 text-gray-700">{rev.reviewBody}</p>
                   <div className="mt-2 text-yellow-500">
                     {"★".repeat(
                       Math.floor(Number(rev.reviewRating.ratingValue))
@@ -135,10 +134,11 @@ export default async function Page({ params }: { params: Params }) {
 
         {/* Sidebar */}
         <aside className="bg-gray-100 rounded-lg shadow p-6 h-fit">
-          <h3 className="text-xl font-bold mb-4">📢 Sản phẩm liên quan</h3>
+          <h3 className="text-xl font-bold mb-4 text-black">📢 Sản phẩm liên quan</h3>
           <ul className="space-y-4">
             {mockProducts
               .filter((item) => item.slug !== product.slug)
+              .slice(0, 5)
               .map((related) => (
                 <li key={related.id} className="flex items-center space-x-4">
                   <Image
@@ -160,7 +160,7 @@ export default async function Page({ params }: { params: Params }) {
         </aside>
       </div>
 
-      {/* SEO Structured Data */}
+      {/* Structured Data: Product Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -206,7 +206,7 @@ export default async function Page({ params }: { params: Params }) {
               "@type": "OfferShippingDetails",
               shippingRate: {
                 "@type": "MonetaryAmount",
-                value: "30000", // Phí ship cố định (ví dụ: 30,000 VND)
+                value: "30000",
                 currency: "VND",
               },
               shippingDestination: {
@@ -219,13 +219,13 @@ export default async function Page({ params }: { params: Params }) {
                   "@type": "QuantitativeValue",
                   minValue: 1,
                   maxValue: 2,
-                  unitCode: "d", // ngày
+                  unitCode: "d",
                 },
                 transitTime: {
                   "@type": "QuantitativeValue",
                   minValue: 2,
                   maxValue: 4,
-                  unitCode: "d", // ngày
+                  unitCode: "d",
                 },
               },
             },
@@ -234,10 +234,10 @@ export default async function Page({ params }: { params: Params }) {
               applicableCountry: "VN",
               returnPolicyCategory:
                 "https://schema.org/MerchantReturnFiniteReturnWindow",
-              merchantReturnDays: 7, // Cho phép đổi trả trong 7 ngày
+              merchantReturnDays: 7,
               returnMethod: "https://schema.org/ReturnByMail",
               refundType: "https://schema.org/RefundMoney",
-              returnFees: "https://schema.org/FreeReturn", // Miễn phí đổi trả
+              returnFees: "https://schema.org/FreeReturn",
             },
           }),
         }}

@@ -4,7 +4,6 @@ import mockProducts from "@/data/mockProduct";
 import mockBlog from "@/data/mockBlog";
 import Link from "next/link";
 
-// Metadata SEO
 export const metadata: Metadata = {
   title: "WTM - Cửa hàng áo bóng đá cổ điển, áo đấu vintage giá rẻ",
   description:
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/asset/logo.png", // Đường dẫn logo trong thư mục public
+        url: "/asset/logo.png",
         width: 500,
         height: 500,
         alt: "WTM Logo",
@@ -40,104 +39,157 @@ export const metadata: Metadata = {
   },
 };
 
-// Trang Home
 export default function Home() {
   return (
-    <main className="container mx-auto p-4">
-      {/* Header với logo */}
-      <header className="flex justify-center items-center py-4 bg-gray-600 mb-1">
+    <main className="max-w-screen-xl mx-auto p-4">
+      {/* Header */}
+      <header className="flex justify-center items-center py-6 bg-gray-700 mb-4 rounded-lg">
         <Image
           src="/asset/logo.png"
           alt="WTM Logo - Cửa hàng áo quần thể thao cổ điển"
-          width={300}
-          height={300}
-          priority={true}
+          width={240}
+          height={240}
+          className="rounded-full"
+          priority
         />
       </header>
 
-      <nav className="text-sm text-gray-600">
-        &gt;
-        <Link href="/" className="hover:text-blue-500">
+      <nav className="flex justify-center gap-6 my-6 text-lg font-medium text-white border border-white rounded-lg p-4 bg-gray-700">
+        <Link href="/" className="hover:text-blue-600 ">
           Trang chủ
-        </Link>{" "}
+        </Link>
+        <Link href="/product" className="hover:text-blue-600">
+          Sản phẩm
+        </Link>
+        <Link href="/blog" className="hover:text-blue-600">
+          Blog
+        </Link>
       </nav>
 
-      {/* Nội dung trang */}
-      <section className="text-center">
-        <h1 className="text-4xl font-bold">
-          WTM - Mua Áo Bóng Đá Cổ Điển, Áo Đấu Vintage Giá Rẻ
+      {/* Giới thiệu */}
+      <section className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-gray-50">
+          WTM - Áo Bóng Đá Cổ Điển Chính Hãng, Giá Tốt
         </h1>
-        <p className="text-gray-600 mt-2">
-          Chuyên cung cấp <strong>áo quần đấu cổ điển (vintage)</strong>, hàng
-          tuyển từ các CLB Châu Âu.
+        <p className="text-gray-50 mt-2 text-lg">
+          Chuyên cung cấp <strong>áo đấu vintage</strong> từ các CLB Châu Âu nổi
+          tiếng. Hàng đẹp, chất lượng, giao nhanh toàn quốc.
         </p>
       </section>
 
-      {/* Danh sách sản phẩm */}
-      <section className="mt-8">
-        <h2 className="text-3xl font-bold text-center">🛒 Sản Phẩm Nổi Bật</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 mb-6">
+      {/* Sản phẩm nổi bật */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold text-center mb-6">
+          🛒 Sản Phẩm Nổi Bật
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {mockProducts.map((product) => (
-            <div key={product.slug} className="border p-4 rounded-lg shadow-lg">
+            <article
+              key={product.slug}
+              className="border rounded-lg shadow hover:shadow-lg transition bg-white overflow-hidden"
+              itemScope
+              itemType="https://schema.org/Product"
+            >
               <Image
                 src={product.image}
-                alt={`Mẫu áo bóng đá cổ điển ${product.name} - Áo bóng đá cổ điển (vintage)`}
-                width={300}
+                alt={`Áo đấu ${product.name} - áo bóng đá cổ điển`}
+                width={400}
                 height={300}
-                className="mx-auto"
+                className="w-full h-[250px] object-cover"
+                itemProp="image"
               />
-              <h3 className="text-xl font-bold mt-2">{product.name}</h3>
-              <p className="text-gray-700 font-semibold">
-                Giá: {product.price}
-              </p>
-              <p className="text-gray-500">Tình trạng: {product.condition}</p>
-              <Link
-                href={`/product/${product.slug}`}
-                className="text-blue-500 mt-2 inline-block"
-              >
-                Xem chi tiết {product.name}
-              </Link>
-            </div>
+              <div className="p-4">
+                <h3
+                  className="text-lg font-semibold text-black"
+                  itemProp="name"
+                >
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 font-medium">
+                  Giá:{" "}
+                  <span
+                    itemProp="offers"
+                    itemScope
+                    itemType="https://schema.org/Offer"
+                  >
+                    <span itemProp="priceCurrency" content="VND">
+                      ₫
+                    </span>
+                    <span itemProp="price">{product.price}</span>
+                  </span>
+                </p>
+                <p className="text-gray-500 text-sm">
+                  Tình trạng: {product.condition}
+                </p>
+                <Link
+                  href={`/product/${product.slug}`}
+                  className="text-blue-600 hover:underline mt-2 inline-block"
+                  aria-label={`Xem chi tiết ${product.name}`}
+                >
+                  Xem chi tiết →
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      {/* Danh sách blog */}
-      <section className="mt-8">
-        <h2 className="text-3xl font-bold mt-8">📝 Blog & Tin Tức Mới Nhất</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+      {/* Blog mới */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold text-center mb-6">
+          📝 Tin Tức Mới Nhất
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {mockBlog.map((blog) => (
-            <div key={blog.id} className="border p-4 rounded-lg shadow-lg">
+            <article
+              key={blog.id}
+              className="border rounded-lg shadow hover:shadow-lg transition bg-white overflow-hidden"
+              itemScope
+              itemType="https://schema.org/BlogPosting"
+            >
               <Image
                 src={blog.image}
-                alt={blog.title}
-                width={300}
+                alt={`Ảnh blog: ${blog.title}`}
+                width={600}
                 height={400}
-                className="w-full h-[400px] object-cover rounded-md"
-                loading="lazy"
+                className="w-full h-[250px] object-cover"
+                itemProp="image"
               />
-              <h3 className="text-xl font-semibold mt-2">{blog.title}</h3>
-              <p className="text-gray-600">{blog.excerpt}</p>
-              <Link
-                href={`/blog/${blog.slug}`}
-                className="text-blue-500 mt-2 block"
-              >
-                Đọc thêm
-              </Link>
-            </div>
+              <div className="p-4">
+                <h3
+                  className="text-lg text-black font-semibold mb-1"
+                  itemProp="headline"
+                >
+                  {blog.title}
+                </h3>
+                <p
+                  className="text-gray-600 text-sm mb-2"
+                  itemProp="description"
+                >
+                  {blog.excerpt}
+                </p>
+                <Link
+                  href={`/blog/${blog.slug}`}
+                  className="text-blue-600 hover:underline inline-block"
+                  aria-label={`Đọc thêm: ${blog.title}`}
+                >
+                  Đọc thêm →
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
-        {/* Nút xem tất cả bài blog */}
         <div className="text-center mt-6">
           <Link
             href="/blog"
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
           >
             Xem tất cả bài viết
           </Link>
         </div>
       </section>
 
+      {/* Structured Data JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -160,7 +212,7 @@ export default function Home() {
               "@type": "OfferShippingDetails",
               shippingRate: {
                 "@type": "MonetaryAmount",
-                value: "30000", // Phí ship cố định (ví dụ: 30,000 VND)
+                value: "30000",
                 currency: "VND",
               },
               shippingDestination: {
@@ -173,13 +225,13 @@ export default function Home() {
                   "@type": "QuantitativeValue",
                   minValue: 1,
                   maxValue: 2,
-                  unitCode: "d", // ngày
+                  unitCode: "d",
                 },
                 transitTime: {
                   "@type": "QuantitativeValue",
                   minValue: 2,
                   maxValue: 4,
-                  unitCode: "d", // ngày
+                  unitCode: "d",
                 },
               },
             },
@@ -188,10 +240,10 @@ export default function Home() {
               applicableCountry: "VN",
               returnPolicyCategory:
                 "https://schema.org/MerchantReturnFiniteReturnWindow",
-              merchantReturnDays: 7, // Cho phép đổi trả trong 7 ngày
+              merchantReturnDays: 7,
               returnMethod: "https://schema.org/ReturnByMail",
               refundType: "https://schema.org/RefundMoney",
-              returnFees: "https://schema.org/FreeReturn", // Miễn phí đổi trả
+              returnFees: "https://schema.org/FreeReturn",
             },
           }),
         }}
