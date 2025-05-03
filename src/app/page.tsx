@@ -4,6 +4,7 @@ import mockProducts from "@/data/mockProduct";
 import mockBlog from "@/data/mockBlog";
 import Link from "next/link";
 
+// SEO Metadata
 export const metadata: Metadata = {
   title: "WTM - Cửa hàng áo bóng đá cổ điển, áo đấu vintage giá rẻ",
   description:
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
     description: "Mua áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
-    url: "https://wtm-vintage-sport.vercel.app/",
+    url: "https://www.aodaucodienwtm.com/",
     type: "website",
     images: [
       {
@@ -54,8 +55,9 @@ export default function Home() {
         />
       </header>
 
+      {/* Navigation */}
       <nav className="flex justify-center gap-6 my-6 text-lg font-medium text-white border border-white rounded-lg p-4 bg-gray-700">
-        <Link href="/" className="hover:text-blue-600 ">
+        <Link href="/" className="hover:text-blue-600">
           Trang chủ
         </Link>
         <Link href="/product" className="hover:text-blue-600">
@@ -66,7 +68,7 @@ export default function Home() {
         </Link>
       </nav>
 
-      {/* Giới thiệu */}
+      {/* Introduction */}
       <section className="text-center mb-10">
         <h1 className="text-4xl font-bold text-gray-50">
           WTM - Áo Bóng Đá Cổ Điển Chính Hãng, Giá Tốt
@@ -77,7 +79,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Sản phẩm nổi bật */}
+      {/* Featured Products */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-center mb-6">
           🛒 Sản Phẩm Nổi Bật
@@ -92,7 +94,7 @@ export default function Home() {
             >
               <Image
                 src={product.image}
-                alt={`Áo đấu ${product.name} - áo bóng đá cổ điển`}
+                alt={`Áo đấu ${product.name}`}
                 width={400}
                 height={300}
                 className="w-full h-[250px] object-cover"
@@ -134,7 +136,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog mới */}
+      {/* Blog Section */}
       <section className="mb-12">
         <h2 className="text-3xl font-bold text-center mb-6">
           📝 Tin Tức Mới Nhất
@@ -189,7 +191,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Structured Data JSON-LD */}
+      {/* Structured Data (JSON-LD) */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -197,7 +199,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "WTM Vintage Sport",
-            url: "https://wtm-vintage-sport.vercel.app",
+            url: "https://www.aodaucodienwtm.com",
             description:
               "Cửa hàng chuyên cung cấp áo quần thể thao cổ điển từ các CLB châu Âu.",
             publisher: {
@@ -205,7 +207,7 @@ export default function Home() {
               name: "WTM Vintage Sport",
               logo: {
                 "@type": "ImageObject",
-                url: "/asset/logo.png",
+                url: "https://www.aodaucodienwtm.com/asset/logo.png",
               },
             },
             shippingDetails: {

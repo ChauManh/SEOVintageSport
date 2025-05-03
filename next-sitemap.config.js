@@ -1,9 +1,9 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://wtm-vintage-sport.vercel.app", // Đổi thành domain thật nếu có
+  siteUrl: "https://www.aodaucodienwtm.com",
   generateRobotsTxt: true, // Tự tạo robots.txt
-  generateIndexSitemap: true, // Sitemap tổng (khi nhiều sitemap con)
-  changefreq: "daily", // Gợi ý tần suất cập nhật
+  generateIndexSitemap: true,
+  changefreq: "daily",
   priority: 0.7,
   sitemapSize: 5000,
   robotsTxtOptions: {
@@ -13,8 +13,6 @@ module.exports = {
         allow: "/",
       },
     ],
-    additionalSitemaps: [
-      "https://wtm-vintage-sport.vercel.app/server-sitemap.xml",
-    ],
+    additionalSitemaps: ["https://www.aodaucodienwtm.com/server-sitemap.xml"],
   },
 };

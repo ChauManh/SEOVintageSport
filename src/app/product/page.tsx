@@ -1,3 +1,4 @@
+// app/product/page.tsx
 import mockProducts from "@/data/mockProduct";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,14 +12,17 @@ export const metadata: Metadata = {
     "áo bóng đá cổ điển",
     "áo đấu vintage",
     "mua áo bóng đá CLB Châu Âu",
-    "WTM sản phẩm",
+    "WTM Vintage Sport",
     "danh sách áo đấu",
   ],
+  metadataBase: new URL("https://www.aodaucodienwtm.com"),
+  alternates: { canonical: "/product" },
   openGraph: {
     title: "Danh sách sản phẩm | WTM Vintage Sport",
     description:
       "Khám phá các mẫu áo bóng đá cổ điển đến từ những CLB hàng đầu Châu Âu.",
-    url: "https://wtm-vintage-sport.vercel.app/product",
+    url: "https://www.aodaucodienwtm.com/product",
+    siteName: "WTM Vintage Sport",
     type: "website",
     images: [
       {
@@ -31,25 +35,65 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sản phẩm áo bóng đá cổ điển | WTM",
+    title: "Sản phẩm áo bóng đá cổ điển | WTM Vintage Sport",
     description: "Xem toàn bộ sản phẩm áo đấu vintage chính hãng từ WTM.",
-    images: ["/asset/logo.png"],
+    images: ["https://www.aodaucodienwtm.com/asset/logo.png"],
   },
 };
 
 export default function ProductPage() {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
-      <h1 className="text-3xl md:text-5xl font-bold text-center mb-8">
+      {/* Header */}
+      <header className="flex flex-col md:flex-row items-center justify-between bg-gray-800 text-white rounded-lg p-6 mb-8">
+        <Link href="/" className="flex items-center space-x-3">
+          <Image
+            src="/asset/logo.png"
+            alt="WTM Logo"
+            width={60}
+            height={60}
+            className="rounded-full"
+          />
+          <span className="text-2xl font-bold">WTM Vintage Sport</span>
+        </Link>
+        <nav className="flex space-x-4 mt-4 md:mt-0">
+          <Link href="/" className="hover:text-blue-400 transition-colors">
+            Trang chủ
+          </Link>
+          <Link href="/product" className="underline">
+            Sản phẩm
+          </Link>
+          <Link href="/blog" className="hover:text-blue-400 transition-colors">
+            Blog
+          </Link>
+        </nav>
+      </header>
+
+      {/* Breadcrumb */}
+      <nav className="text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+        <ol className="list-reset flex">
+          <li>
+            <Link href="/" className="hover:underline">
+              Trang chủ
+            </Link>
+          </li>
+          <li>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="font-semibold">Sản phẩm</li>
+        </ol>
+      </nav>
+
+      <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
         Tất Cả Sản Phẩm
       </h1>
 
-      {/* Lưới sản phẩm */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {/* Grid sản phẩm */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {mockProducts.map((product) => (
           <article
             key={product.slug}
-            className="border rounded-lg shadow hover:shadow-lg transition bg-white"
+            className="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden"
             itemScope
             itemType="https://schema.org/Product"
           >
@@ -62,7 +106,10 @@ export default function ProductPage() {
               itemProp="image"
             />
             <div className="p-4">
-              <h2 className="text-lg font-semibold text-black" itemProp="name">
+              <h2
+                className="text-lg font-semibold text-gray-900"
+                itemProp="name"
+              >
                 {product.name}
               </h2>
               <p className="text-green-600 font-medium">
@@ -81,7 +128,7 @@ export default function ProductPage() {
               </p>
               <Link
                 href={`/product/${product.slug}`}
-                className="text-blue-600 hover:underline inline-block mt-2"
+                className="inline-block mt-2 text-blue-600 hover:underline"
                 aria-label={`Xem chi tiết ${product.name}`}
               >
                 Xem chi tiết →
@@ -89,7 +136,7 @@ export default function ProductPage() {
             </div>
           </article>
         ))}
-      </div>
+      </section>
 
       {/* JSON-LD Structured Data */}
       <script
@@ -99,24 +146,23 @@ export default function ProductPage() {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: "Danh sách sản phẩm | WTM Vintage Sport",
-            url: "https://wtm-vintage-sport.vercel.app/product",
-            mainEntity: mockProducts.map((product) => ({
+            url: "https://www.aodaucodienwtm.com/product",
+            mainEntity: mockProducts.map((p) => ({
               "@type": "Product",
-              name: product.name,
-              image: product.image,
-              description: product.description,
-              brand: {
-                "@type": "Brand",
-                name: product.brand,
-              },
+              name: p.name,
+              image: p.image,
+              description: p.description,
+              brand: { "@type": "Brand", name: p.brand || "WTM Vintage Sport" },
               offers: {
                 "@type": "Offer",
-                priceCurrency: product.priceCurrency,
-                price: product.price,
-                availability: `https://schema.org/${product.availability}`,
-                url: `https://wtm-vintage-sport.vercel.app/product/${product.slug}`,
+                priceCurrency: p.priceCurrency || "VND",
+                price: p.price,
+                availability: `https://schema.org/${
+                  p.availability || "InStock"
+                }`,
+                url: `https://www.aodaucodienwtm.com/product/${p.slug}`,
               },
-              aggregateRating: product.aggregateRating,
+              aggregateRating: p.aggregateRating,
             })),
           }),
         }}

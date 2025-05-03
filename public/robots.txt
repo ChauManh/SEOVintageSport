@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://wtm-vintage-sport.vercel.app
+Host: https://www.aodaucodienwtm.com
 
 # Sitemaps
-Sitemap: https://wtm-vintage-sport.vercel.app/sitemap.xml
-Sitemap: https://wtm-vintage-sport.vercel.app/server-sitemap.xml
+Sitemap: https://www.aodaucodienwtm.com/sitemap.xml
+Sitemap: https://www.aodaucodienwtm.com/server-sitemap.xml

@@ -1,8 +1,10 @@
-import mockProducts from "@/data/mockProduct";
-import Image from "next/image";
+// app/product/[slug]/page.tsx
+
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import mockProducts from "@/data/mockProduct";
 
 type Params = Promise<{ slug: string }>;
 
@@ -15,19 +17,41 @@ export async function generateMetadata({
   const product = mockProducts.find((p) => p.slug === slug);
   if (!product) return { title: "Không tìm thấy sản phẩm" };
 
+  const productUrl = `https://www.aodaucodienwtm.com/product/${slug}`;
+
   return {
-    title: `${product.name} - Mua áo quần bóng đá cổ điển | WTM`,
-    description: `Tìm ${product.name} - ${product.condition} giá ${product.price}. Cửa hàng WTM chuyên bán áo đấu cổ điển (vintage) CLB Châu Âu.`,
+    title: `${product.name} – Mua áo bóng đá cổ điển | WTM Vintage Sport`,
+    description: `${product.name} – ${product.condition}, giá ${product.price} VND. WTM Vintage Sport chuyên bán áo đấu vintage chính hãng từ các CLB châu Âu.`,
     keywords: [
       product.name.toLowerCase(),
       "mua áo bóng đá cổ điển",
       "áo đấu vintage",
-      "WTM shop",
-      "cửa hàng áo thể thao",
-      "áo bóng đá CLB Châu Âu",
+      "WTM Vintage Sport",
       `mua ${product.name} giá tốt`,
-      `tìm ${product.name} chính hãng`,
+      `áo ${product.name} chính hãng`,
     ],
+    alternates: { canonical: productUrl },
+    openGraph: {
+      title: product.name,
+      description: product.description,
+      url: productUrl,
+      siteName: "WTM Vintage Sport",
+      type: "website",
+      images: [
+        {
+          url: product.image,
+          width: 800,
+          height: 800,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.name,
+      description: product.description,
+      images: [product.image],
+    },
   };
 }
 
@@ -36,123 +60,146 @@ export default async function Page({ params }: { params: Params }) {
   const product = mockProducts.find((p) => p.slug === slug);
   if (!product) return notFound();
 
+  const productUrl = `https://www.aodaucodienwtm.com/product/${slug}`;
+
   return (
     <main className="max-w-screen-xl mx-auto p-4">
       {/* Header */}
-      <header className="flex items-center justify-between py-4 border-b bg-gray-700 mb-8 px-6 rounded-lg shadow-lg">
+      <header className="flex flex-col md:flex-row items-center justify-between bg-gray-800 text-white rounded-lg p-6 mb-8">
         <Link href="/" className="flex items-center space-x-3">
           <Image
             src="/asset/logo.png"
-            alt="WTM Logo"
+            alt="WTM Vintage Sport Logo"
             width={60}
             height={60}
             className="rounded-full"
           />
-          <span className="text-2xl font-bold text-white">
-            WTM Vintage Sport
-          </span>
+          <span className="text-2xl font-bold">WTM Vintage Sport</span>
         </Link>
-        <Link
-          href="/"
-          className="text-white bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition"
-        >
-          🏠 Trang chủ
-        </Link>
+        <nav className="flex space-x-4 mt-4 md:mt-0">
+          <Link href="/" className="hover:text-blue-400">
+            Trang chủ
+          </Link>
+          <Link href="/product" className="hover:text-blue-400">
+            Sản phẩm
+          </Link>
+          <Link href="/blog" className="hover:text-blue-400">
+            Blog
+          </Link>
+        </nav>
       </header>
 
-      {/* Main Content */}
+      {/* Breadcrumb */}
+      <nav className="text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+        <ol className="list-reset flex">
+          <li>
+            <Link href="/" className="hover:underline">
+              Trang chủ
+            </Link>
+          </li>
+          <li>
+            <span className="mx-2">/</span>
+          </li>
+          <li>
+            <Link href="/product" className="hover:underline">
+              Sản phẩm
+            </Link>
+          </li>
+          <li>
+            <span className="mx-2">/</span>
+          </li>
+          <li className="font-semibold">{product.name}</li>
+        </ol>
+      </nav>
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Product Details */}
-        <div className="lg:col-span-3 space-y-8">
-          <div className="bg-white rounded-lg shadow p-6">
+        <section className="lg:col-span-3 space-y-8">
+          <article className="bg-white rounded-lg shadow p-6">
             <Image
               src={product.image}
-              alt={product.name}
+              alt={`${product.name} – áo bóng đá cổ điển`}
               width={600}
               height={600}
               className="rounded-lg mx-auto"
             />
-            <h1 className="text-3xl font-bold mt-6 text-black">{product.name}</h1>
+            <h1 className="text-3xl font-bold mt-6 text-gray-900">
+              {product.name}
+            </h1>
             <p className="text-xl text-green-600 mt-2">
-              💰 Giá: {product.price}
+              💰 Giá: {product.price} VND
             </p>
-            <p className="text-gray-600 mt-1">
+            <p className="text-gray-700 mt-1">
               📌 Tình trạng: {product.condition}
             </p>
-            <p className="mt-4 text-gray-700 leading-relaxed">
+            <p className="mt-4 text-gray-800 leading-relaxed">
               {product.description}
             </p>
-          </div>
+          </article>
 
-          {/* Aggregate Rating */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-black">
+          <section className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
               ⭐ Đánh giá tổng quát
             </h2>
             <div className="flex items-center space-x-3">
               <span className="text-yellow-500 text-2xl">
-                {"★".repeat(
-                  Math.floor(Number(product.aggregateRating.ratingValue))
-                )}
+                {"★".repeat(Math.floor(+product.aggregateRating.ratingValue))}
                 {"☆".repeat(
-                  5 - Math.floor(Number(product.aggregateRating.ratingValue))
+                  5 - Math.floor(+product.aggregateRating.ratingValue)
                 )}
               </span>
-              <span className="text-lg text-gray-700">
+              <span className="text-gray-700">
                 {product.aggregateRating.ratingValue} (
                 {product.aggregateRating.reviewCount} đánh giá)
               </span>
             </div>
-          </div>
+          </section>
 
-          {/* Reviews */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold mb-6 text-black">
+          <section className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-900">
               💬 Đánh giá chi tiết
             </h2>
             <div className="space-y-6">
-              {product.review.map((rev, idx) => (
-                <div key={idx} className="border-b pb-4">
-                  <p className="font-semibold text-lg text-gray-700">
+              {product.review.map((rev, i) => (
+                <div key={i} className="border-b pb-4">
+                  <p className="font-semibold text-gray-800">
                     {rev.author?.name || "Ẩn danh"}
                   </p>
                   <p className="text-sm text-gray-500">{rev.datePublished}</p>
-                  <p className="mt-2 text-gray-700">{rev.reviewBody}</p>
+                  <p className="mt-2 text-gray-800">{rev.reviewBody}</p>
                   <div className="mt-2 text-yellow-500">
-                    {"★".repeat(
-                      Math.floor(Number(rev.reviewRating.ratingValue))
-                    )}
-                    {"☆".repeat(
-                      5 - Math.floor(Number(rev.reviewRating.ratingValue))
-                    )}
+                    {"★".repeat(Math.floor(+rev.reviewRating.ratingValue))}
+                    {"☆".repeat(5 - Math.floor(+rev.reviewRating.ratingValue))}
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </section>
+        </section>
 
-        {/* Sidebar */}
-        <aside className="bg-gray-100 rounded-lg shadow p-6 h-fit">
-          <h3 className="text-xl font-bold mb-4 text-black">📢 Sản phẩm liên quan</h3>
+        {/* Related Products */}
+        <aside className="bg-gray-100 rounded-lg shadow p-6">
+          <h3 className="text-xl font-bold mb-4 text-gray-900">
+            📢 Sản phẩm liên quan
+          </h3>
           <ul className="space-y-4">
             {mockProducts
-              .filter((item) => item.slug !== product.slug)
+              .filter((p) => p.slug !== product.slug)
               .slice(0, 5)
-              .map((related) => (
-                <li key={related.id} className="flex items-center space-x-4">
+              .map((rel) => (
+                <li key={rel.slug} className="flex items-center space-x-4">
                   <Image
-                    src={related.image}
-                    alt={related.name}
+                    src={rel.image}
+                    alt={`${rel.name} thumbnail`}
                     width={60}
                     height={60}
                     className="rounded-md"
                   />
                   <Link
-                    href={`/product/${related.slug}`}
-                    className="text-blue-600 hover:underline text-lg flex-1"
+                    href={`/product/${rel.slug}`}
+                    className="text-blue-600 hover:underline flex-1"
                   >
-                    {related.name}
+                    {rel.name}
                   </Link>
                 </li>
               ))}
@@ -160,7 +207,38 @@ export default async function Page({ params }: { params: Params }) {
         </aside>
       </div>
 
-      {/* Structured Data: Product Schema */}
+      {/* JSON-LD for BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Trang chủ",
+                item: "https://www.aodaucodienwtm.com/",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Sản phẩm",
+                item: "https://www.aodaucodienwtm.com/product",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: product.name,
+                item: productUrl,
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* JSON-LD for Product */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -168,12 +246,10 @@ export default async function Page({ params }: { params: Params }) {
             "@context": "https://schema.org",
             "@type": "Product",
             name: product.name,
-            image: product.image,
+            image: [product.image],
             description: product.description,
-            brand: {
-              "@type": "Brand",
-              name: "WTM Vintage Sport",
-            },
+            sku: product.slug,
+            brand: { "@type": "Brand", name: "WTM Vintage Sport" },
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: product.aggregateRating.ratingValue,
@@ -181,10 +257,7 @@ export default async function Page({ params }: { params: Params }) {
             },
             review: product.review.map((rev) => ({
               "@type": "Review",
-              author: {
-                "@type": "Person",
-                name: rev.author.name,
-              },
+              author: { "@type": "Person", name: rev.author.name },
               datePublished: rev.datePublished,
               reviewBody: rev.reviewBody,
               reviewRating: {
@@ -196,44 +269,15 @@ export default async function Page({ params }: { params: Params }) {
             })),
             offers: {
               "@type": "Offer",
+              url: productUrl,
               priceCurrency: "VND",
-              priceValidUntil: "2025-12-31",
               price: product.price,
+              priceValidUntil: "2025-12-31",
               availability: "https://schema.org/InStock",
-              url: `https://wtm-vintage-sport.vercel.app/product/${product.slug}`,
-            },
-            shippingDetails: {
-              "@type": "OfferShippingDetails",
-              shippingRate: {
-                "@type": "MonetaryAmount",
-                value: "30000",
-                currency: "VND",
-              },
-              shippingDestination: {
-                "@type": "DefinedRegion",
-                addressCountry: "VN",
-              },
-              deliveryTime: {
-                "@type": "ShippingDeliveryTime",
-                handlingTime: {
-                  "@type": "QuantitativeValue",
-                  minValue: 1,
-                  maxValue: 2,
-                  unitCode: "d",
-                },
-                transitTime: {
-                  "@type": "QuantitativeValue",
-                  minValue: 2,
-                  maxValue: 4,
-                  unitCode: "d",
-                },
-              },
             },
             hasMerchantReturnPolicy: {
               "@type": "MerchantReturnPolicy",
               applicableCountry: "VN",
-              returnPolicyCategory:
-                "https://schema.org/MerchantReturnFiniteReturnWindow",
               merchantReturnDays: 7,
               returnMethod: "https://schema.org/ReturnByMail",
               refundType: "https://schema.org/RefundMoney",
