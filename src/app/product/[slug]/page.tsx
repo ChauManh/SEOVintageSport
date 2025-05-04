@@ -21,7 +21,7 @@ export async function generateMetadata({
 
   return {
     title: `${product.name} – Mua áo bóng đá cổ điển | WTM Vintage Sport`,
-    description: `${product.name} – ${product.condition}, giá ${product.price} VND. WTM Vintage Sport chuyên bán áo đấu vintage chính hãng từ các CLB châu Âu.`,
+    description: `${product.name} – ${product.condition}, giá ${product.price} VND. WTM Vintage Sport chuyên bán áo đấu cổ điển, vintage chính hãng từ các CLB châu Âu.`,
     keywords: [
       product.name.toLowerCase(),
       "mua áo bóng đá cổ điển",
@@ -29,6 +29,16 @@ export async function generateMetadata({
       "WTM Vintage Sport",
       `mua ${product.name} giá tốt`,
       `áo ${product.name} chính hãng`,
+      `áo ${product.name} giá rẻ`,
+      `mua ${product.name} online`,
+      `mua áo bóng đá ${product.name}`,
+      `áo bóng đá cổ điển ${product.name}`,
+      `áo đấu ${product.name}`,
+      `áo đấu vintage ${product.name}`,
+      `áo bóng đá cổ điển giá rẻ`,
+      `áo bóng đá cổ điển chính hãng`,
+      `áo bóng đá cổ điển đẹp`,
+      `áo bóng đá cổ điển chất lượng`,
     ],
     alternates: { canonical: productUrl },
     openGraph: {

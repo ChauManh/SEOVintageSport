@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     siteName: "WTM",
     images: [
       {
-        url: "/asset/logo.png",
-        width: 1200,
-        height: 630,
+        url: "https://www.aodaucodienwtm.com/asset/logo.png",
+        width: 800,
+        height: 600,
         alt: "WTM - Áo quần bóng đá cổ điển",
       },
     ],
@@ -37,11 +37,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@wtm_sport", // nếu có Twitter
+    site: "@aodaucodien_wtm", // nếu có Twitter
     title: "WTM - Áo quần bóng đá cổ điển",
     description:
-      "Mua bán áo bóng đá vintage chính hãng từ các CLB nổi tiếng Châu Âu. Hàng tuyển, chất lượng cao.",
-    images: ["/asset/logo.png"],
+      "Mua bán áo bóng đá cổ điển (vintage) chính hãng từ các CLB nổi tiếng Châu Âu. Hàng tuyển, chất lượng cao.",
+    images: [
+      {
+        url: "https://www.aodaucodienwtm.com/asset/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WTM - Áo quần bóng đá cổ điển",
+      },
+    ],
   },
 };
 
