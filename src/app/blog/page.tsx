@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "WTM Blog",
     images: [
       {
-        url: "/asset/blog-thumbnail.jpg",
+        url: "https://www.aodaucodienwtm.com/asset/blog-thumbnail.jpg",
         width: 800,
         height: 500,
         alt: "WTM Blog",

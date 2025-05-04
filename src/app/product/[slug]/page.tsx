@@ -49,7 +49,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: product.image,
+          url: `https://www.aodaucodienwtm.com${product.image}`,
           width: 800,
           height: 800,
           alt: product.name,
@@ -60,7 +60,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: product.name,
       description: product.description,
-      images: [product.image],
+      images: [`https://www.aodaucodienwtm.com${product.image}`],
     },
   };
 }
@@ -256,7 +256,7 @@ export default async function Page({ params }: { params: Params }) {
             "@context": "https://schema.org",
             "@type": "Product",
             name: product.name,
-            image: [product.image],
+            image: [`https://www.aodaucodienwtm.com${product.image}`],
             description: product.description,
             sku: product.slug,
             brand: { "@type": "Brand", name: "WTM Vintage Sport" },

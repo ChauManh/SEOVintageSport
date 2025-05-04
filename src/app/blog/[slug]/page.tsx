@@ -43,7 +43,7 @@ export async function generateMetadata({
       siteName: "WTM Blog",
       images: [
         {
-          url: blog.image,
+          url: `https://www.aodaucodienwtm.com${blog.image}`,
           width: 800,
           height: 500,
           alt: blog.title,
@@ -54,7 +54,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: blog.title,
       description: blog.excerpt,
-      images: [blog.image],
+      images: [`https://www.aodaucodienwtm.com${blog.image}`],
     },
   };
 }

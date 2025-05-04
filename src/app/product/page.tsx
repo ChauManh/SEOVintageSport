@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/asset/logo.png",
+        url: "https://www.aodaucodienwtm.com/asset/logo.png",
         width: 500,
         height: 500,
         alt: "WTM Vintage Sport",
