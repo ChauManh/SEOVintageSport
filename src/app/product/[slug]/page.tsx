@@ -132,6 +132,8 @@ export default async function Page({ params }: { params: Params }) {
               width={600}
               height={600}
               className="rounded-lg mx-auto"
+              loading="lazy"
+              itemProp="image"
             />
             <h1 className="text-3xl font-bold mt-6 text-gray-900">
               {product.name}
@@ -204,6 +206,8 @@ export default async function Page({ params }: { params: Params }) {
                     width={60}
                     height={60}
                     className="rounded-md"
+                    loading="lazy"
+                    itemProp="image"
                   />
                   <Link
                     href={`/product/${rel.slug}`}
@@ -284,14 +288,28 @@ export default async function Page({ params }: { params: Params }) {
               price: product.price,
               priceValidUntil: "2025-12-31",
               availability: "https://schema.org/InStock",
-            },
-            hasMerchantReturnPolicy: {
-              "@type": "MerchantReturnPolicy",
-              applicableCountry: "VN",
-              merchantReturnDays: 7,
-              returnMethod: "https://schema.org/ReturnByMail",
-              refundType: "https://schema.org/RefundMoney",
-              returnFees: "https://schema.org/FreeReturn",
+              shippingDetails: {
+                "@type": "OfferShippingDetails",
+                shippingRate: {
+                  "@type": "MonetaryAmount",
+                  value: 30000,
+                  currency: "VND",
+                },
+                shippingDestination: {
+                  "@type": "DefinedRegion",
+                  addressCountry: "VN",
+                },
+              },
+              hasMerchantReturnPolicy: {
+                "@type": "MerchantReturnPolicy",
+                applicableCountry: "VN",
+                returnPolicyCategory:
+                  "https://schema.org/MerchantReturnFiniteReturnWindow",
+                merchantReturnDays: 7,
+                returnMethod: "https://schema.org/ReturnByMail",
+                refundType: "https://schema.org/RefundMoney",
+                returnFees: "https://schema.org/FreeReturn",
+              },
             },
           }),
         }}

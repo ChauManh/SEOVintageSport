@@ -107,6 +107,7 @@ export default function ProductPage() {
               width={400}
               height={300}
               className="w-full h-[250px] object-cover"
+              loading="lazy"
               itemProp="image"
             />
             <div className="p-4">
@@ -154,9 +155,12 @@ export default function ProductPage() {
             mainEntity: mockProducts.map((p) => ({
               "@type": "Product",
               name: p.name,
-              image: p.image,
+              image: `https://www.aodaucodienwtm.com${p.image}`,
               description: p.description,
-              brand: { "@type": "Brand", name: p.brand || "WTM Vintage Sport" },
+              brand: {
+                "@type": "Brand",
+                name: p.brand || "WTM Vintage Sport",
+              },
               offers: {
                 "@type": "Offer",
                 priceCurrency: p.priceCurrency || "VND",
@@ -165,6 +169,27 @@ export default function ProductPage() {
                   p.availability || "InStock"
                 }`,
                 url: `https://www.aodaucodienwtm.com/product/${p.slug}`,
+                shippingDetails: {
+                  "@type": "OfferShippingDetails",
+                  shippingRate: {
+                    "@type": "MonetaryAmount",
+                    value: p.shippingDetails?.rate || 30000,
+                    currency: p.priceCurrency || "VND",
+                  },
+                  shippingDestination: {
+                    "@type": "DefinedRegion",
+                    addressCountry: p.shippingDetails?.destination || "VN",
+                  },
+                },
+                hasMerchantReturnPolicy: {
+                  "@type": "MerchantReturnPolicy",
+                  returnPolicyCategory:
+                    "https://schema.org/MerchantReturnFiniteReturnWindow",
+                  merchantReturnDays: p.returnPolicy?.days || 7,
+                  returnMethod: `https://schema.org/${
+                    p.returnPolicy?.method || "ReturnByMail"
+                  }`,
+                },
               },
               aggregateRating: p.aggregateRating,
             })),

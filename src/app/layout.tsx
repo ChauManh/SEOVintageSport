@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Metadata
 export const metadata: Metadata = {
   title: "WTM - Áo quần bóng đá cổ điển",
   description:
@@ -21,6 +23,11 @@ export const metadata: Metadata = {
   keywords:
     "áo quần bóng đá cổ điển, áo đấu vintage, WTM, quần áo bóng đá cổ điển, áo bóng đá cổ điển WTM, áo quần bóng đá 9x, áo vintage",
   metadataBase: new URL("https://www.aodaucodienwtm.com"),
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  themeColor: "#1f2937",
   openGraph: {
     title: "WTM - Áo quần bóng đá cổ điển",
     description:
@@ -39,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@aodaucodien_wtm", // nếu có Twitter
+    site: "@aodaucodien_wtm",
     title: "WTM - Áo quần bóng đá cổ điển",
     description:
       "Mua bán áo bóng đá cổ điển (vintage) chính hãng từ các CLB nổi tiếng Châu Âu. Hàng tuyển, chất lượng cao.",
@@ -66,10 +73,21 @@ export default function RootLayout({
           name="google-site-verification"
           content="o7tSNa8OoD4Xg_15Q8WNJHxHCoGrr7zGJKzePBRUU-4"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-33GHZE6GFK"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-33GHZE6GFK');
+  `}
+        </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-800`}
       >
         {children}
         <Analytics />

@@ -230,12 +230,15 @@ export default async function BlogDetail({ params }: { params: Params }) {
               "@type": "Article",
               headline: blog.title,
               description: blog.excerpt,
-              image: blog.image,
+              image: `https://www.aodaucodienwtm.com${blog.image}`,
               author: { "@type": "Organization", name: "WTM Blog" },
               publisher: {
                 "@type": "Organization",
                 name: "WTM Vintage Sport",
-                logo: { "@type": "ImageObject", url: "/asset/logo.png" },
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.aodaucodienwtm.com/asset/logo.png",
+                },
               },
               datePublished: blog.datePublished,
               mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },

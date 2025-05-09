@@ -98,6 +98,7 @@ export default function Home() {
                 width={400}
                 height={300}
                 className="w-full h-[250px] object-cover"
+                loading="lazy"
                 itemProp="image"
               />
               <div className="p-4">
@@ -155,6 +156,7 @@ export default function Home() {
                 width={600}
                 height={400}
                 className="w-full h-[250px] object-cover"
+                loading="lazy"
                 itemProp="image"
               />
               <div className="p-4">
@@ -201,51 +203,23 @@ export default function Home() {
             name: "WTM Vintage Sport",
             url: "https://www.aodaucodienwtm.com",
             description:
-              "Cửa hàng chuyên cung cấp áo quần thể thao cổ điển từ các CLB châu Âu.",
+              "Cửa hàng chuyên cung cấp áo quần thể thao cổ điển, áo đấu vintage từ các CLB châu Âu. Hàng tuyển, chất lượng cao, giá tốt.",
             publisher: {
               "@type": "Organization",
               name: "WTM Vintage Sport",
+              url: "https://www.aodaucodienwtm.com",
               logo: {
                 "@type": "ImageObject",
                 url: "https://www.aodaucodienwtm.com/asset/logo.png",
+                width: 500,
+                height: 500,
               },
             },
-            shippingDetails: {
-              "@type": "OfferShippingDetails",
-              shippingRate: {
-                "@type": "MonetaryAmount",
-                value: "30000",
-                currency: "VND",
-              },
-              shippingDestination: {
-                "@type": "DefinedRegion",
-                addressCountry: "VN",
-              },
-              deliveryTime: {
-                "@type": "ShippingDeliveryTime",
-                handlingTime: {
-                  "@type": "QuantitativeValue",
-                  minValue: 1,
-                  maxValue: 2,
-                  unitCode: "d",
-                },
-                transitTime: {
-                  "@type": "QuantitativeValue",
-                  minValue: 2,
-                  maxValue: 4,
-                  unitCode: "d",
-                },
-              },
-            },
-            hasMerchantReturnPolicy: {
-              "@type": "MerchantReturnPolicy",
-              applicableCountry: "VN",
-              returnPolicyCategory:
-                "https://schema.org/MerchantReturnFiniteReturnWindow",
-              merchantReturnDays: 7,
-              returnMethod: "https://schema.org/ReturnByMail",
-              refundType: "https://schema.org/RefundMoney",
-              returnFees: "https://schema.org/FreeReturn",
+            potentialAction: {
+              "@type": "SearchAction",
+              target:
+                "https://www.aodaucodienwtm.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string",
             },
           }),
         }}

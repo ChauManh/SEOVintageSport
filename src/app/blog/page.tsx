@@ -110,6 +110,7 @@ export default function BlogPage() {
                 fill
                 className="object-cover"
                 itemProp="image"
+                loading="lazy"
               />
             </div>
             <div className="p-4">
@@ -152,7 +153,7 @@ export default function BlogPage() {
               blogPosts: mockBlog.map((b) => ({
                 "@type": "BlogPosting",
                 headline: b.title,
-                image: b.image,
+                image: `https://www.aodaucodienwtm.com${b.image}`,
                 author: {
                   "@type": "Person",
                   name: "WTM Blog",
@@ -162,13 +163,14 @@ export default function BlogPage() {
                   name: "WTM",
                   logo: {
                     "@type": "ImageObject",
-                    url: "/asset/logo.png",
+                    url: "https://www.aodaucodienwtm.com/asset/logo.png",
                   },
                 },
                 mainEntityOfPage: {
                   "@type": "WebPage",
                   "@id": `https://www.aodaucodienwtm.com/blog/${b.slug}`,
                 },
+                datePublished: b.datePublished,
               })),
             },
             {

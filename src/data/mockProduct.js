@@ -11,6 +11,14 @@ const mockProducts = [
     slug: "ao-mu-1999",
     description:
       "Áo đấu Manchester United mùa giải 1998-1999, năm mà MU giành cú ăn ba lịch sử (Premier League, FA Cup, Champions League). Thiết kế cổ điển với logo Sharp làm nhà tài trợ chính. Đây là một mẫu áo hiếm dành cho các fan hâm mộ Quỷ Đỏ.",
+    shippingDetails: {
+      rate: 30000,
+      destination: "VN",
+    },
+    returnPolicy: {
+      days: 7,
+      method: "ReturnByMail",
+    },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.5",
@@ -61,6 +69,8 @@ const mockProducts = [
     slug: "ao-real-2002",
     description:
       "Áo đấu Real Madrid 2001-2002, mùa giải mà Los Blancos lên ngôi vô địch Champions League lần thứ 9 với bàn thắng tuyệt đẹp của Zidane. Áo có thiết kế đơn giản, logo Siemens Mobile và phong cách hoài cổ.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.0",
@@ -111,6 +121,8 @@ const mockProducts = [
     slug: "ao-milan-2007",
     description:
       "Áo đấu AC Milan mùa giải 2006-2007, năm mà Rossoneri vô địch Champions League sau khi đánh bại Liverpool 2-1. Áo có thiết kế sọc đỏ đen truyền thống, biểu tượng Adidas và logo bwin tài trợ.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.3",
@@ -161,6 +173,8 @@ const mockProducts = [
     slug: "ao-barca-2009",
     description:
       "Áo đấu Barcelona mùa giải 2008-2009, mùa giải huyền thoại với cú ăn ba của đội bóng xứ Catalan. Thiết kế nổi bật với logo UNICEF trên ngực áo, cùng các đường sọc xanh đỏ truyền thống.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.7",
@@ -212,6 +226,8 @@ const mockProducts = [
     slug: "ao-chelsea-2012",
     description:
       "Áo đấu Chelsea 2011-2012, mùa giải lịch sử khi The Blues lần đầu tiên giành chức vô địch Champions League. Thiết kế màu xanh truyền thống, logo Samsung tài trợ và phong cách mạnh mẽ.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.2",
@@ -262,6 +278,8 @@ const mockProducts = [
     slug: "ao-arsenal-2004",
     description:
       "Áo đấu Arsenal mùa giải 2003-2004, mùa giải bất bại của Pháo Thủ tại Premier League. Thiết kế đặc biệt với màu đỏ đậm, logo O2 trên ngực áo và huy hiệu Invincibles mang tính biểu tượng.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.6",
@@ -312,6 +330,8 @@ const mockProducts = [
     slug: "ao-inter-2010",
     description:
       "Áo đấu Inter Milan mùa giải 2009-2010, mùa giải huyền thoại với cú ăn ba dưới thời Jose Mourinho. Áo có thiết kế sọc xanh đen đặc trưng, biểu tượng Pirelli và phong cách cổ điển.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.4",
@@ -362,6 +382,8 @@ const mockProducts = [
     slug: "ao-bayern-2013",
     description:
       "Áo đấu Bayern Munich mùa giải 2012-2013, khi Hùm Xám giành cú ăn ba lịch sử với chức vô địch Bundesliga, DFB Pokal và Champions League. Áo có thiết kế màu đỏ truyền thống với logo T-Mobile nổi bật.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.2",
@@ -397,6 +419,8 @@ const mockProducts = [
     slug: "ao-liverpool-2005",
     description:
       "Áo đấu Liverpool mùa giải 2004-2005, năm mà Lữ Đoàn Đỏ giành chức vô địch Champions League theo cách không thể quên được. Áo có thiết kế cổ điển, logo Carlsberg trên ngực áo và màu đỏ đặc trưng.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.3",
@@ -432,6 +456,8 @@ const mockProducts = [
     slug: "ao-juventus-2003",
     description:
       "Áo đấu Juventus mùa giải 2002-2003, mùa giải gần nhất của Lão Bà tại Champions League trước khi họ gặp AC Milan trong trận chung kết. Áo có thiết kế sọc trắng đen truyền thống với logo Nike và BetClic tài trợ.",
+    shippingDetails: { rate: 30000, destination: "VN" },
+    returnPolicy: { days: 7, method: "ReturnByMail" },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.1",
