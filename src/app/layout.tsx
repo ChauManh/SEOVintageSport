@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  themeColor: "#1f2937",
   openGraph: {
     title: "WTM - Áo quần bóng đá cổ điển",
     description:

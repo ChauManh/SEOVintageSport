@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import mockProducts from "@/data/mockProduct";
 import mockBlog from "@/data/mockBlog";
 import Link from "next/link";
+import { Facebook, Instagram, Twitter } from "lucide-react";
+// import Footer from "@/components/Footer";
 
 // SEO Metadata
 export const metadata: Metadata = {
@@ -192,6 +194,110 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-gray-800 to-gray-900 text-gray-200 py-12">
+        <div className="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* about */}
+          <div>
+            <h4 className="text-xl font-semibold mb-4 uppercase">
+              WTM Vintage Sport
+            </h4>
+            <p className="text-sm leading-relaxed">
+              Chuyên cung cấp áo bóng đá cổ điển và áo đấu vintage chính hãng,
+              hàng tuyển chất lượng cao, giao hàng toàn quốc.
+            </p>
+          </div>
+
+          {/* quick links */}
+          <div>
+            <h4 className="text-xl font-semibold mb-4 uppercase">Liên kết</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/" className="hover:text-white transition">
+                  Trang chủ
+                </Link>
+              </li>
+              <li>
+                <Link href="/product" className="hover:text-white transition">
+                  Sản phẩm
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-white transition">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/chinh-sach-doi-tra"
+                  className="hover:text-white transition"
+                >
+                  Chính sách đổi trả
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* contact */}
+          <div>
+            <h4 className="text-xl font-semibold mb-4 uppercase">Liên hệ</h4>
+            <p className="text-sm mb-2">
+              Email:{" "}
+              <Link
+                href="mailto:chaumanh1108@gmail.com"
+                className="hover:text-white transition"
+              >
+                chaumanh1108@gmail.com
+              </Link>
+            </p>
+            <p className="text-sm mb-2">
+              Hotline:{" "}
+              <Link
+                href="tel:0367485383"
+                className="hover:text-white transition"
+              >
+                0367485383
+              </Link>
+            </p>
+            <p className="text-sm">
+              Địa chỉ: Khu phố 6, P.Linh Trung, Tp.Thủ Đức Hồ Chí Minh 00700
+            </p>
+          </div>
+
+          {/* social */}
+          <div>
+            <h4 className="text-xl font-semibold mb-4 uppercase">Theo dõi</h4>
+            <div className="flex space-x-4">
+              <Link
+                href="https://www.facebook.com/profile.php?id=61574631824649"
+                aria-label="Facebook"
+                className="hover:text-white"
+              >
+                <Facebook className="w-6 h-6" />
+              </Link>
+              <Link
+                href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Faodaucodien_wtm%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRnNqNlViUXppOXEyUzViZAEeXPMiIUGsaGQNVmeXO8Hsvy7eziiZgD2rKl5er7bUnFzP_WUc5pYsMima4RY_aem_Vi_dJ6WDOi2RkLVJNTgmVg&h=AT2n7hgwaYwJlaYPU2GEZbh3z3DTq4j4BtvLQzjaMWFuTaVrZ58hvG0MlMusF3aYop8pE8y3diizsWNcw8AQiK82wn76FwXls3fxZFOwTJpgDZpicwZYYepp9NVlCbrzcrlK2g"
+                aria-label="Instagram"
+                className="hover:text-white"
+              >
+                <Instagram className="w-6 h-6" />
+              </Link>
+              <Link
+                href="https://x.com/aodaucodien_wtm"
+                aria-label="Twitter"
+                className="hover:text-white"
+              >
+                <Twitter className="w-6 h-6" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-gray-700 pt-6 text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} WTM Vintage Sport. All rights reserved.
+        </div>
+      </footer>
 
       {/* Structured Data (JSON-LD) */}
       <script
