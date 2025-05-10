@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "WTM shop",
     "cửa hàng áo thể thao WTM",
     "WTM",
-    "áo bóng đá CLB Châu Âu",
+    "áo đấu cổ điển",
   ],
   openGraph: {
     title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/asset/logo.png",
+        url: "https://www.aodaucodienwtm.com/asset/logo.png",
         width: 500,
         height: 500,
         alt: "WTM Logo",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "WTM - Cửa hàng áo quần bóng đá cổ điển",
     description:
       "Mua bán áo quần bóng đá cổ điển, hàng tuyển từ các CLB Châu Âu.",
-    images: ["/asset/logo.png"],
+    images: ["https://www.aodaucodienwtm.com/asset/logo.png"],
   },
 };
 
