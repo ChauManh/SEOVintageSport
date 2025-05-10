@@ -68,6 +68,9 @@ export default function Home() {
         <Link href="/blog" className="hover:text-blue-600">
           Blog
         </Link>
+        <Link href="/ao-dau-co-dien" className="hover:text-blue-600">
+          Cẩm nang
+        </Link>
       </nav>
 
       {/* Introduction */}
