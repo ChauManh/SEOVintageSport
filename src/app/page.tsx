@@ -57,6 +57,29 @@ export default function Home() {
         />
       </header>
 
+      {/* Search Box */}
+      <div className="flex justify-center my-6">
+        <form
+          action="/search"
+          method="get"
+          className="w-full max-w-xl flex border border-gray-300 rounded-md overflow-hidden shadow-sm"
+        >
+          <input
+            type="text"
+            name="query"
+            placeholder="Tìm kiếm áo đấu vintage..."
+            className="flex-1 px-4 py-2 outline-none text-gray-700"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-4 hover:bg-blue-700 transition"
+          >
+            Tìm kiếm
+          </button>
+        </form>
+      </div>
+
       {/* Navigation */}
       <nav className="flex justify-center gap-6 my-6 text-lg font-medium text-white border border-white rounded-lg p-4 bg-gray-700">
         <Link href="/" className="hover:text-blue-600">
@@ -75,10 +98,10 @@ export default function Home() {
 
       {/* Introduction */}
       <section className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-50">
+        <h1 className="text-4xl font-bold">
           WTM - Áo Bóng Đá Cổ Điển Chính Hãng, Giá Tốt
         </h1>
-        <p className="text-gray-50 mt-2 text-lg">
+        <p className="mt-2 text-lg">
           Chuyên cung cấp <strong>áo đấu vintage</strong> từ các CLB Châu Âu nổi
           tiếng. Hàng đẹp, chất lượng, giao nhanh toàn quốc.
         </p>
@@ -193,7 +216,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gradient-to-r from-gray-800 to-gray-900 text-gray-200 py-12">
-        <div className="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="max-w mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* about */}
           <div>
             <h4 className="text-xl font-semibold mb-4 uppercase">
