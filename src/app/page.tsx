@@ -85,15 +85,15 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-bold text-center mb-6">
-          🛒 Sản Phẩm Nổi Bật
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
+          🛒 Sản phẩm nổi bật
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {mockProducts.map((product) => (
             <article
               key={product.slug}
-              className="border rounded-lg shadow hover:shadow-lg transition bg-white overflow-hidden"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-200"
               itemScope
               itemType="https://schema.org/Product"
             >
@@ -108,31 +108,24 @@ export default function Home() {
               />
               <div className="p-4">
                 <h3
-                  className="text-lg font-semibold text-black"
+                  className="text-lg font-semibold text-gray-800"
                   itemProp="name"
                 >
                   {product.name}
                 </h3>
                 <p className="text-gray-600 font-medium">
-                  Giá:{" "}
-                  <span
-                    itemProp="offers"
-                    itemScope
-                    itemType="https://schema.org/Offer"
-                  >
-                    <span itemProp="priceCurrency" content="VND">
-                      ₫
-                    </span>
-                    <span itemProp="price">{product.price}</span>
-                  </span>
+                  Giá: ₫{product.price.toLocaleString()}
                 </p>
                 <p className="text-gray-500 text-sm">
                   Tình trạng: {product.condition}
                 </p>
+                <p className="text-sm text-yellow-600">
+                  ⭐ {product.aggregateRating?.ratingValue || "Chưa có"} điểm –{" "}
+                  {product.aggregateRating?.reviewCount || 0} đánh giá
+                </p>
                 <Link
                   href={`/product/${product.slug}`}
                   className="text-blue-600 hover:underline mt-2 inline-block"
-                  aria-label={`Xem chi tiết ${product.name}`}
                 >
                   Xem chi tiết →
                 </Link>

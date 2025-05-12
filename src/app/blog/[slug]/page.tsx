@@ -69,7 +69,7 @@ export default async function BlogDetail({ params }: { params: Params }) {
   return (
     <main className="max-w-screen-xl mx-auto p-4">
       {/* Header */}
-      <header className="flex flex-col md:flex-row items-center justify-between bg-gray-700 text-white rounded-lg p-6 mb-6">
+      <header className="flex flex-col md:flex-row items-center justify-between bg-gray-800 text-white rounded-xl p-6 mb-6 shadow">
         <Link href="/" className="flex items-center space-x-3">
           <Image
             src="/asset/logo.png"
@@ -82,7 +82,7 @@ export default async function BlogDetail({ params }: { params: Params }) {
         </Link>
         <Link
           href="/"
-          className="mt-4 md:mt-0 bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-800 transition"
+          className="mt-4 md:mt-0 bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition"
         >
           🏠 Trang chủ
         </Link>
@@ -90,7 +90,7 @@ export default async function BlogDetail({ params }: { params: Params }) {
 
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-600 mb-4" aria-label="Breadcrumb">
-        <ol className="list-reset flex">
+        <ol className="list-reset flex flex-wrap">
           <li>
             <Link href="/" className="hover:underline">
               Trang chủ
@@ -116,14 +116,17 @@ export default async function BlogDetail({ params }: { params: Params }) {
         <article
           itemScope
           itemType="https://schema.org/Article"
-          className="lg:col-span-8 space-y-6"
+          className="lg:col-span-8 space-y-6 bg-white rounded-xl shadow-md p-6 border border-gray-200"
         >
-          <h1 itemProp="headline" className="text-3xl font-bold">
+          <h1 itemProp="headline" className="text-3xl font-bold text-gray-900">
             {blog.title}
           </h1>
-          <p itemProp="datePublished" className="text-gray-500 italic">
-            Đăng ngày: {blog.datePublished}
-          </p>
+
+          <div className="text-sm text-gray-500 flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+            <span>🗓️ {blog.datePublished}</span>
+            {blog.author && <span>✍️ {blog.author}</span>}
+            {blog.readingTime && <span>⏱️ {blog.readingTime}</span>}
+          </div>
 
           <Image
             src={blog.image}
@@ -135,7 +138,10 @@ export default async function BlogDetail({ params }: { params: Params }) {
             itemProp="image"
           />
 
-          <section itemProp="articleBody" className="prose prose-lg">
+          <section
+            itemProp="articleBody"
+            className="prose prose-lg max-w-none text-gray-800"
+          >
             {blog.content.map((section, i) => {
               if (section.type === "text") {
                 return (
@@ -155,15 +161,17 @@ export default async function BlogDetail({ params }: { params: Params }) {
                       className="rounded-md border"
                       loading="lazy"
                     />
-                    <figcaption className="text-sm text-gray-500 text-center mt-2">
-                      {section.alt}
-                    </figcaption>
+                    {section.alt && (
+                      <figcaption className="text-sm text-gray-500 text-center mt-2">
+                        {section.alt}
+                      </figcaption>
+                    )}
                   </figure>
                 );
               }
               if (section.type === "list") {
                 return (
-                  <ul key={i} className="list-disc list-inside">
+                  <ul key={i} className="list-disc list-inside space-y-1">
                     {section.items!.map((item, j) => (
                       <li key={j}>{item}</li>
                     ))}
@@ -173,12 +181,20 @@ export default async function BlogDetail({ params }: { params: Params }) {
               return null;
             })}
           </section>
+
+          {/* Signature */}
+          <footer className="border-t pt-6 text-sm text-gray-500 mt-10">
+            Viết bởi <strong>{blog.author}</strong> – Cảm ơn bạn đã đọc bài viết
+            trên <span className="text-blue-600 font-semibold">WTM Blog</span>.
+          </footer>
         </article>
 
         {/* Related posts */}
-        <aside className="lg:col-span-4 bg-gray-50 rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">📖 Bài viết liên quan</h2>
-          <ul className="space-y-2">
+        <aside className="lg:col-span-4 bg-gray-50 rounded-xl shadow-md p-6 border border-gray-100">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">
+            📖 Bài viết liên quan
+          </h2>
+          <ul className="space-y-3">
             {mockBlog
               .filter((b) => b.slug !== slug)
               .slice(0, 5)
@@ -186,7 +202,7 @@ export default async function BlogDetail({ params }: { params: Params }) {
                 <li key={rel.id}>
                   <Link
                     href={`/blog/${rel.slug}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-blue-600 hover:underline text-sm"
                   >
                     {rel.title}
                   </Link>

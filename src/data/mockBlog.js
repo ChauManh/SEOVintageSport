@@ -7,11 +7,13 @@ const mockBlog = [
       "Hướng dẫn chi tiết cách bảo quản áo đấu cổ điển (vintage) để tránh phai màu, hư hỏng và duy trì giá trị lâu dài.",
     image: "/asset/blogbqqa.jpg",
     datePublished: "2025-03-20",
+    author: "WTM Team",
+    readingTime: "4 phút đọc",
     content: [
       {
         type: "text",
         value:
-          "Áo bóng đá cổ điển (vintage) không chỉ là trang phục thể thao mà còn là kỷ niệm, một phần lịch sử của bóng đá. Để giữ áo luôn bền đẹp, bạn cần có phương pháp bảo quản đúng cách.",
+          "Áo bóng đá cổ điển (vintage) không chỉ là trang phục thể thao mà còn là kỷ niệm, một phần lịch sử của bóng đá. Để giữ áo luôn bền đẹp, bạn cần có phương pháp bảo quản đúng cách. Bài viết này sẽ giúp bạn biết cách giặt, phơi và lưu trữ áo vintage đúng chuẩn.",
       },
       {
         type: "image",
@@ -21,27 +23,29 @@ const mockBlog = [
       {
         type: "text",
         value:
-          "1. Giặt đúng cách \n Khi giặt áo bóng đá cổ điển (vintage), bạn nên:",
+          "1. Giặt đúng cách\nViệc giặt đúng cách giúp áo không bị bong tróc logo, bạc màu hay giãn vải.",
       },
       {
         type: "list",
         items: [
-          "Giặt tay thay vì giặt máy để tránh làm hỏng vải và logo.",
-          "Sử dụng nước lạnh (dưới 30°C) để giữ màu sắc bền lâu.",
-          "Dùng xà phòng dịu nhẹ, tránh chất tẩy mạnh làm phai màu áo.",
-          "Không vắt quá mạnh vì có thể làm giãn vải.",
+          "Giặt tay nhẹ nhàng thay vì giặt máy để bảo vệ các chi tiết in/thêu.",
+          "Luôn giặt với nước lạnh, không quá 30°C để giữ màu áo.",
+          "Sử dụng xà phòng không chứa chất tẩy mạnh.",
+          "Không sử dụng máy sấy vì nhiệt độ cao làm hỏng chất liệu.",
         ],
       },
       {
         type: "text",
-        value: "2. Phơi và bảo quản",
+        value:
+          "2. Phơi và bảo quản\nSau khi giặt, cách phơi và lưu trữ cũng ảnh hưởng trực tiếp đến tuổi thọ của áo.",
       },
       {
         type: "list",
         items: [
-          "Tránh phơi áo trực tiếp dưới ánh nắng mặt trời để bảo vệ chất liệu vải.",
-          "Treo áo trên móc thay vì gấp để tránh bị nhăn hoặc biến dạng.",
-          "Cất giữ áo ở nơi khô ráo, thoáng mát, tránh độ ẩm cao.",
+          "Phơi áo ở nơi thoáng mát, tránh ánh nắng trực tiếp.",
+          "Không dùng kẹp áo vì sẽ làm mất form áo vai.",
+          "Treo bằng móc gỗ hoặc nhựa bo tròn, tránh móc kim loại.",
+          "Có thể cho túi hút ẩm vào tủ để giữ không khí khô ráo.",
         ],
       },
       {
@@ -52,7 +56,12 @@ const mockBlog = [
       {
         type: "text",
         value:
-          "Kết luận\nBảo quản áo bóng đá cổ điển (vintage) đúng cách giúp giữ được giá trị sưu tầm và kỷ niệm gắn liền với những trận đấu lịch sử. Hãy áp dụng các mẹo trên để áo đấu của bạn luôn như mới!",
+          "3. Một số lưu ý thêm\nNgoài việc giặt và phơi đúng cách, hãy:\n- Tránh mặc áo đi mưa hoặc hoạt động mạnh nếu muốn giữ bền lâu.\n- Hạn chế gấp áo, thay vào đó hãy treo hoặc cuộn nhẹ bằng giấy bảo vệ.\n- Đối với áo có chữ ký cầu thủ, hãy bọc lại bằng bìa nhựa hoặc mica để tránh trầy.",
+      },
+      {
+        type: "text",
+        value:
+          "Kết luận\nBảo quản áo bóng đá cổ điển (vintage) đúng cách giúp giữ được giá trị sưu tầm và cảm xúc với những kỷ niệm bóng đá khó quên. Hãy chăm sóc chiếc áo như một vật phẩm quý!",
       },
     ],
   },
@@ -64,6 +73,8 @@ const mockBlog = [
       "Danh sách những mẫu áo bóng đá cổ điển đẹp nhất mọi thời đại mà dân sưu tầm không thể bỏ lỡ.",
     image: "/asset/top10aodauvintage.webp",
     datePublished: "2025-03-20",
+    author: "WTM Team",
+    readingTime: "3 phút đọc",
     content: [
       {
         type: "text",
@@ -136,6 +147,8 @@ const mockBlog = [
     excerpt:
       "Cách nhận biết áo đấu chính hãng và áo đấu giả để tránh mua nhầm hàng kém chất lượng.",
     image: "/asset/phanbietthatgia.jpg",
+    author: "WTM Team",
+    readingTime: "3 phút đọc",
     content: [
       {
         type: "text",
@@ -190,6 +203,8 @@ const mockBlog = [
       "Cùng điểm qua 3 thương hiệu sản xuất áo đấu bóng đá uy tín nhất hiện nay.",
     image: "/asset/5thuonghieunoitieng.jpg",
     datePublished: "2025-03-20",
+    author: "WTM Team",
+    readingTime: "3 phút đọc",
     content: [
       {
         type: "text",
@@ -262,6 +277,8 @@ const mockBlog = [
       "Cùng nhìn lại những mẫu áo đấu mang tính biểu tượng của Manchester United từ thập niên 80 đến nay.",
     image: "/asset/muhistory.jpg",
     datePublished: "2025-03-22",
+    author: "WTM Team",
+    readingTime: "4 phút đọc",
     content: [
       {
         type: "text",
@@ -324,18 +341,20 @@ const mockBlog = [
       "Biến áo đấu vintage trở thành item thời trang sành điệu khi kết hợp với các món đồ hàng ngày.",
     image: "/asset/phoido.jpg",
     datePublished: "2025-03-23",
+    author: "WTM Team",
+    readingTime: "2 phút đọc",
     content: [
       {
         type: "text",
         value:
-          "Áo đấu vintage không chỉ dành cho sân bóng mà còn có thể biến tấu thành outfit cực chất nếu biết cách phối đồ đúng.",
+          "Áo đấu vintage không chỉ dành cho sân bóng mà còn có thể biến tấu thành outfit cực chất nếu biết cách phối đồ đúng. Xu hướng này được nhiều bạn trẻ yêu thích vì vừa cá tính, vừa mang dấu ấn bóng đá hoài cổ.",
       },
       {
         type: "list",
         items: [
-          "Phối với quần jean rách và giày sneaker trắng – phong cách đường phố.",
-          "Mix cùng áo khoác bomber hoặc denim – retro cá tính.",
-          "Mặc oversize kết hợp cùng short và túi chéo – vibe thể thao hiện đại.",
+          "Phối với quần jean rách và giày sneaker trắng – phong cách đường phố trẻ trung.",
+          "Mix cùng áo khoác bomber hoặc denim – retro cá tính và mạnh mẽ.",
+          "Mặc oversize kết hợp cùng short, mũ lưỡi trai và túi chéo – vibe thể thao hiện đại.",
         ],
       },
       {
@@ -346,12 +365,12 @@ const mockBlog = [
       {
         type: "text",
         value:
-          "Ngoài ra, bạn có thể tạo điểm nhấn bằng cách mix màu áo đấu với phụ kiện như mũ bucket, balo mini hoặc tất cao cổ.",
+          "Ngoài ra, bạn có thể tạo điểm nhấn bằng cách mix màu áo đấu với phụ kiện như mũ bucket, balo mini hoặc tất cao cổ. Những chi tiết nhỏ này giúp outfit hài hòa và nổi bật hơn.",
       },
       {
         type: "text",
         value:
-          "Kết luận: Với sự sáng tạo, áo đấu vintage hoàn toàn có thể trở thành item thời trang cực kỳ nổi bật trong tủ đồ của bạn.",
+          "Kết luận: Với sự sáng tạo trong cách phối đồ, áo đấu vintage không chỉ mang giá trị hoài niệm mà còn có thể trở thành item thời trang cực kỳ nổi bật trong tủ đồ của bạn. Đừng ngại thử nghiệm để thể hiện cá tính riêng!",
       },
     ],
   },

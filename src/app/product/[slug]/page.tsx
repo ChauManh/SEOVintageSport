@@ -124,61 +124,76 @@ export default async function Page({ params }: { params: Params }) {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Product Details */}
         <section className="lg:col-span-3 space-y-8">
-          <article className="bg-white rounded-lg shadow p-6">
-            <Image
-              src={product.image}
-              alt={`${product.name} – áo bóng đá cổ điển`}
-              width={600}
-              height={600}
-              className="rounded-lg mx-auto"
-              loading="lazy"
-              itemProp="image"
-            />
-            <h1 className="text-3xl font-bold mt-6 text-gray-900">
-              {product.name}
-            </h1>
-            <p className="text-xl text-green-600 mt-2">
-              💰 Giá: {product.price} VND
-            </p>
-            <p className="text-gray-700 mt-1">
-              📌 Tình trạng: {product.condition}
-            </p>
-            <p className="mt-4 text-gray-800 leading-relaxed">
-              {product.description}
-            </p>
+          <article className="bg-white rounded-2xl shadow-xl p-6 border border-gray-200">
+            <div className="flex flex-col lg:flex-row items-start gap-8">
+              <Image
+                src={product.image}
+                alt={`${product.name} – áo bóng đá cổ điển`}
+                width={600}
+                height={600}
+                className="rounded-xl w-full max-w-md mx-auto"
+                loading="lazy"
+              />
+              <div className="flex-1 space-y-4">
+                <h1 className="text-4xl font-extrabold text-gray-900">
+                  {product.name}
+                </h1>
+                <p className="text-lg text-gray-700">
+                  🏷️ {product.brand} • 📆 Năm: {product.year || "Đang cập nhật"}
+                </p>
+                <p className="text-2xl text-green-600 font-semibold">
+                  💰 Giá: {product.price.toLocaleString()} VND
+                </p>
+                <p className="text-gray-700">
+                  📦 Tình trạng: {product.condition}
+                </p>
+                <p className="text-gray-800 leading-relaxed border-t pt-4">
+                  {product.description}
+                </p>
+                <div className="text-sm mt-4 text-gray-500">
+                  🚚 Phí vận chuyển:{" "}
+                  {product.shippingDetails.rate.toLocaleString()} VND • Chính
+                  sách đổi trả trong {product.returnPolicy.days} ngày
+                </div>
+              </div>
+            </div>
           </article>
 
-          <section className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+          <section className="bg-yellow-50 rounded-xl shadow p-6 border border-yellow-100">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
               ⭐ Đánh giá tổng quát
             </h2>
             <div className="flex items-center space-x-3">
-              <span className="text-yellow-500 text-2xl">
+              <div className="text-yellow-500 text-2xl">
                 {"★".repeat(Math.floor(+product.aggregateRating.ratingValue))}
                 {"☆".repeat(
                   5 - Math.floor(+product.aggregateRating.ratingValue)
                 )}
-              </span>
-              <span className="text-gray-700">
-                {product.aggregateRating.ratingValue} (
-                {product.aggregateRating.reviewCount} đánh giá)
-              </span>
+              </div>
+              <div className="text-gray-800 text-base">
+                {product.aggregateRating.ratingValue} điểm •{" "}
+                {product.aggregateRating.reviewCount} đánh giá
+              </div>
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-900">
+          <section className="bg-white rounded-xl shadow p-6 border border-gray-200">
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">
               💬 Đánh giá chi tiết
             </h2>
             <div className="space-y-6">
               {product.review.map((rev, i) => (
                 <div key={i} className="border-b pb-4">
-                  <p className="font-semibold text-gray-800">
-                    {rev.author?.name || "Ẩn danh"}
-                  </p>
-                  <p className="text-sm text-gray-500">{rev.datePublished}</p>
+                  <div className="flex justify-between items-center">
+                    <p className="font-semibold text-gray-800">
+                      {rev.author?.name || "Ẩn danh"}
+                    </p>
+                    <span className="text-sm text-gray-500">
+                      {rev.datePublished}
+                    </span>
+                  </div>
                   <p className="mt-2 text-gray-800">{rev.reviewBody}</p>
-                  <div className="mt-2 text-yellow-500">
+                  <div className="text-yellow-500 mt-1">
                     {"★".repeat(Math.floor(+rev.reviewRating.ratingValue))}
                     {"☆".repeat(5 - Math.floor(+rev.reviewRating.ratingValue))}
                   </div>
@@ -206,7 +221,6 @@ export default async function Page({ params }: { params: Params }) {
                     height={60}
                     className="rounded-md"
                     loading="lazy"
-                    itemProp="image"
                   />
                   <Link
                     href={`/product/${rel.slug}`}
