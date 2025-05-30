@@ -148,7 +148,7 @@ export default async function BlogDetail({ params }: { params: Params }) {
                   <p
                     key={i}
                     className="whitespace-pre-line"
-                    dangerouslySetInnerHTML={{ __html: section.value }}
+                    dangerouslySetInnerHTML={{  __html: section.value ?? "", }}
                   ></p>
                 );
               }
