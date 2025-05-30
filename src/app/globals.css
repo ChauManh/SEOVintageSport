@@ -24,3 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.prose a {
+  @apply text-blue-600 underline hover:text-blue-800;
+}

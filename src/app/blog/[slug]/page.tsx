@@ -145,9 +145,11 @@ export default async function BlogDetail({ params }: { params: Params }) {
             {blog.content.map((section, i) => {
               if (section.type === "text") {
                 return (
-                  <p key={i} className="whitespace-pre-line">
-                    {section.value}
-                  </p>
+                  <p
+                    key={i}
+                    className="whitespace-pre-line"
+                    dangerouslySetInnerHTML={{ __html: section.value }}
+                  ></p>
                 );
               }
               if (section.type === "image") {

@@ -98,8 +98,6 @@ export default function ProductPage() {
           <article
             key={product.slug}
             className="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden"
-            itemScope
-            itemType="https://schema.org/Product"
           >
             <Image
               src={product.image}
@@ -163,12 +161,13 @@ export default function ProductPage() {
               },
               offers: {
                 "@type": "Offer",
+                url: `https://www.aodaucodienwtm.com/product/${p.slug}`,
                 priceCurrency: p.priceCurrency || "VND",
                 price: p.price,
+                priceValidUntil: "2025-12-31",
                 availability: `https://schema.org/${
                   p.availability || "InStock"
                 }`,
-                url: `https://www.aodaucodienwtm.com/product/${p.slug}`,
                 shippingDetails: {
                   "@type": "OfferShippingDetails",
                   shippingRate: {
@@ -191,7 +190,26 @@ export default function ProductPage() {
                   }`,
                 },
               },
-              aggregateRating: p.aggregateRating,
+              aggregateRating: p.aggregateRating && {
+                "@type": "AggregateRating",
+                ratingValue: p.aggregateRating.ratingValue,
+                reviewCount: p.aggregateRating.reviewCount,
+              },
+              review: p.review?.map((rev) => ({
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: rev.author.name,
+                },
+                datePublished: rev.datePublished,
+                reviewBody: rev.reviewBody,
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: rev.reviewRating.ratingValue,
+                  bestRating: "5",
+                  worstRating: "1",
+                },
+              })),
             })),
           }),
         }}

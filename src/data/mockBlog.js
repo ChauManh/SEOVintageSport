@@ -279,12 +279,11 @@ const mockBlog = [
     datePublished: "2025-03-22",
     author: "WTM Team",
     readingTime: "4 phút đọc",
-    content: [
-      {
-        type: "text",
-        value:
-          "Manchester United không chỉ nổi tiếng bởi thành tích sân cỏ mà còn bởi những mẫu áo đấu gắn liền với lịch sử hào hùng của CLB.",
-      },
+content: [
+  {
+    type: "text",
+    value: " <a href=\"https://www.manutd.com\" target=\"_blank\" rel=\"noopener noreferrer\">Manchester United</a> không chỉ nổi tiếng bởi thành tích sân cỏ mà còn bởi những mẫu áo đấu gắn liền với lịch sử hào hùng của CLB."
+  },
       {
         type: "image",
         src: "/asset/mu1980.webp",

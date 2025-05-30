@@ -117,8 +117,6 @@ export default function Home() {
             <article
               key={product.slug}
               className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-200"
-              itemScope
-              itemType="https://schema.org/Product"
             >
               <Image
                 src={product.image}
