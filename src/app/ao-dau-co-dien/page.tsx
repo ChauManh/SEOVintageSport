@@ -164,6 +164,38 @@ export default function VintageFootballGuidePage() {
           🎽 Khám phá bộ sưu tập áo đấu cổ điển →
         </Link>
       </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Áo Đấu, Áo Bóng Đá Cổ Điển: Kiến Thức Tổng Hợp",
+            description:
+              "Tổng hợp kiến thức đầy đủ về áo đấu, áo bóng đá cổ điển: lịch sử, cách phân biệt thật - giả, mẹo phối đồ và địa chỉ mua uy tín.",
+            image: "https://www.aodaucodienwtm.com/asset/blog-thumbnail.jpg",
+            author: {
+              "@type": "Organization",
+              name: "WTM Vintage Sport",
+              url: "https://www.aodaucodienwtm.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "WTM Vintage Sport",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.aodaucodienwtm.com/asset/logo.png",
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://www.aodaucodienwtm.com/ao-bong-da-co-dien",
+            },
+            datePublished: "2025-05-29", // thay bằng ngày thực tế nếu có
+            dateModified: "2025-05-30", // cập nhật ngày chỉnh sửa
+          }),
+        }}
+      />
     </main>
   );
 }

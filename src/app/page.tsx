@@ -320,43 +320,57 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://www.aodaucodienwtm.com",
-            name: "WTM Vintage Sport",
-            image: "https://www.aodaucodienwtm.com/asset/logo.png",
-            description:
-              "Cửa hàng chuyên cung cấp áo bóng đá cổ điển, áo đấu vintage từ các CLB châu Âu. Hàng tuyển, chất lượng cao, giá tốt.",
-            url: "https://www.aodaucodienwtm.com",
-            telephone: "+84-367-485-383",
-            priceRange: "₫₫",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "Khu phố 6, Phường Linh Trung",
-              addressLocality: "Thành phố Thủ Đức",
-              addressRegion: "Hồ Chí Minh",
-              postalCode: "00700",
-              addressCountry: "VN",
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": "https://www.aodaucodienwtm.com",
+              name: "WTM Vintage Sport",
+              image: "https://www.aodaucodienwtm.com/asset/logo.png",
+              description:
+                "Cửa hàng chuyên cung cấp áo bóng đá cổ điển, áo đấu vintage từ các CLB châu Âu. Hàng tuyển, chất lượng cao, giá tốt. Một số người gọi nhầm là WTN Sport hoặc AoDauCodien.",
+              url: "https://www.aodaucodienwtm.com",
+              telephone: "+84-367-485-383",
+              priceRange: "₫₫",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Khu phố 6, Phường Linh Trung",
+                addressLocality: "Thành phố Thủ Đức",
+                addressRegion: "Hồ Chí Minh",
+                postalCode: "00700",
+                addressCountry: "VN",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 10.8705,
+                longitude: 106.8032,
+              },
+              openingHours: "Mo-Su 08:00-21:00",
+              sameAs: [
+                "https://www.facebook.com/profile.php?id=61574631824649",
+                "https://www.instagram.com/aodaucodien_wtm",
+                "https://x.com/aodaucodien_wtm",
+              ],
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://www.aodaucodienwtm.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
             },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: 10.8705,
-              longitude: 106.8032,
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "WTM Vintage Sport",
+              url: "https://www.aodaucodienwtm.com",
+              logo: "https://www.aodaucodienwtm.com/asset/logo.png",
+              sameAs: [
+                "https://www.facebook.com/profile.php?id=61574631824649",
+                "https://www.instagram.com/aodaucodien_wtm",
+                "https://x.com/aodaucodien_wtm",
+              ],
             },
-            openingHours: "Mo-Su 08:00-21:00",
-            sameAs: [
-              "https://www.facebook.com/profile.php?id=61574631824649",
-              "https://www.instagram.com/aodaucodien_wtm",
-              "https://x.com/aodaucodien_wtm",
-            ],
-            potentialAction: {
-              "@type": "SearchAction",
-              target:
-                "https://www.aodaucodienwtm.com/search?q={search_term_string}",
-              "query-input": "required name=search_term_string",
-            },
-          }),
+          ]),
         }}
       />
     </main>
